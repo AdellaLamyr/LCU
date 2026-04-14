@@ -552,3 +552,67 @@ footer {
         line-height: 1.5 !important;
     }
 }
+
+@media screen and (max-width: 768px) {
+	    .top-bar {
+        display: none !important; /* Прячем полосу с контактами */
+    }
+
+    .container, .container-narrow {
+        padding: 0 15px !important;
+    }
+
+    /* 🎯 1. ШАПКА: Меню падает в столбик */
+    .main-nav .container {
+        align-items: center !important; /* На мобилках выровняем по центру для красоты */
+        text-align: center !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+    }
+
+    .nav-links {
+        flex-direction: column !important; /* Ссылки друг под другом */
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
+    .spec-hero h1 {
+        font-size: 24px !important;
+    }
+
+    .centered-title {
+        font-size: 22px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваные пробелы justify */
+    }
+
+    .project-grid {
+        max-width: 100% !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
+
+    /* 🎯 3. ФУТЕР: Маленький шрифт и перенос слов */
+    footer {
+        padding: 20px 15px !important;
+    }
+
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.5 !important;
+    }
+}
