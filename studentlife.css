@@ -546,55 +546,61 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-	    .top-bar {
-        display: none !important; /* Прячем полосу с контактами */
+    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
     }
 
-    .container, .container-narrow {
-        padding: 0 15px !important;
+    /* Все контейнеры делаем резиновыми */
+    .container, 
+    div[class*="container"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;  
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
     }
 
-    /* 🎯 1. ШАПКА: Меню падает в столбик */
+    /* Картинки больше не вытолкнут экран */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+	
+    /* 🎯 2. Навигация */
+    .top-bar {
+        display: none !important;
+    }
+	
     .main-nav .container {
-        display: flex !important;
-        flex-direction: column !important; /* Ставим элементы в колонку */
-        align-items: center !important;    /* Центрируем по горизонтали */
-        justify-content: center !important;
+        flex-direction: column !important; 
+        gap: 15px !important;
         text-align: center !important;
-        padding: 20px 0 !important;
+        padding: 15px 0 !important;
     }
 
     .logo {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;    /* Центрирует картинку лого */
         justify-content: center !important;
-        width: 100% !important;
-        margin-bottom: 20px !important;    /* Отступ до ссылок меню */
-        text-align: center !important;
-    }
-
-    /* Если логотип — это картинка, принудительно центрируем её */
-    .logo img {
-        margin: 0 auto !important;
-        display: block !important;
+        margin-bottom: 5px;
     }
 
     .nav-links {
-        display: flex !important;
-        flex-direction: column !important; /* Ссылки в столбик */
-        align-items: center !important;    /* Каждая ссылка по центру */
-        justify-content: center !important;
+        flex-direction: column !important;  
+        align-items: center !important;
+        gap: 12px !important; 
         width: 100% !important;
-        gap: 15px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        list-style: none !important;
     }
 
     .nav-links li {
-        width: 100% !important;
-        text-align: center !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
     }
     /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
     .spec-hero h1 {
@@ -684,59 +690,63 @@ footer {
     }
 }
 
-/* =======================================================
-   ДЛЯ ТЕЛЕФОНОВ ДО 480px (И САМСУНГОВ)
-   ======================================================= */
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 480px) --- */
 @media screen and (max-width: 480px) {
-	    .top-bar {
-        display: none !important; /* Прячем полосу с контактами */
+    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
     }
 
-    .container, .container-narrow {
-        padding: 0 15px !important;
+    /* Все контейнеры делаем резиновыми */
+    .container, 
+    div[class*="container"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;  
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
     }
 
-    /* 🎯 1. ШАПКА: Меню падает в столбик */
+    /* Картинки больше не вытолкнут экран */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+	
+    /* 🎯 2. Навигация */
+    .top-bar {
+        display: none !important;
+    }
+	
     .main-nav .container {
-        display: flex !important;
-        flex-direction: column !important; /* Ставим элементы в колонку */
-        align-items: center !important;    /* Центрируем по горизонтали */
-        justify-content: center !important;
+        flex-direction: column !important; 
+        gap: 15px !important;
         text-align: center !important;
-        padding: 20px 0 !important;
+        padding: 15px 0 !important;
     }
 
     .logo {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;    /* Центрирует картинку лого */
         justify-content: center !important;
-        width: 100% !important;
-        margin-bottom: 20px !important;    /* Отступ до ссылок меню */
-        text-align: center !important;
-    }
-
-    /* Если логотип — это картинка, принудительно центрируем её */
-    .logo img {
-        margin: 0 auto !important;
-        display: block !important;
+        margin-bottom: 5px;
     }
 
     .nav-links {
-        display: flex !important;
-        flex-direction: column !important; /* Ссылки в столбик */
-        align-items: center !important;    /* Каждая ссылка по центру */
-        justify-content: center !important;
+        flex-direction: column !important;  
+        align-items: center !important;
+        gap: 12px !important; 
         width: 100% !important;
-        gap: 15px !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        list-style: none !important;
     }
 
     .nav-links li {
-        width: 100% !important;
-        text-align: center !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
     }
 
     /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
