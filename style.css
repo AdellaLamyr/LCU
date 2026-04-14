@@ -630,8 +630,7 @@ footer {
         font-size: 20px !important; 
         white-space: normal !important; 
     }
-}
-
+	
 /* 1. Увеличиваем высоту слайдера, чтобы влезли стрелки внизу */
     .hero-slider {
         height: 520px !important; 
