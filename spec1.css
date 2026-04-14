@@ -405,3 +405,127 @@ footer {
     color: #666;
     border-top: 1px solid #333;
 }
+
+@media screen and (max-width: 768px) {
+    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    /* Все контейнеры делаем резиновыми */
+    .container, 
+    div[class*="container"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;  
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Картинки больше не вытолкнут экран */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+	
+    /* 🎯 2. Навигация */
+    .top-bar {
+        display: none !important;
+    }
+	
+    .main-nav .container {
+        flex-direction: column !important; 
+        gap: 15px !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        flex-direction: column !important;  
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
+    }
+	
+    .spec-hero {
+        height: 200px;
+        margin-bottom: 30px;
+    }
+    .spec-hero h1 {
+        font-size: 24px !important;
+        padding: 0 10px;
+    }
+    .spec-hero .subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    /* 2. Заголовки секций */
+    .centered-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* 3. Сетка профессий (переводим из 2х2 в 1 в ряд) */
+    .career-grid-2x2 {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .career-card {
+        flex: 0 0 100%; /* Занимает всю ширину */
+        padding: 20px;
+    }
+
+    /* 4. Таблица цен (переводим из ряда в столбик) */
+    .price-table {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .price-card {
+        flex: 0 0 100%;
+        padding: 25px 15px;
+    }
+
+    /* 5. Форма обратной связи */
+    .feedback-form {
+        padding: 25px 15px; /* Уменьшаем внутренние отступы */
+    }
+    .form-row {
+        flex-direction: column; /* Имя/Фамилия и Почта/Телефон теперь друг под другом */
+        gap: 0;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .submit-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* 6. Текстовые блоки и списки */
+    .text-block p {
+        font-size: 14px;
+        text-align: left; /* На мобилках justify часто делает дыры в тексте */
+    }
+    .spec-list li {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
