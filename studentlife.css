@@ -546,59 +546,59 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
-    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    /* 🛡️ Глобальные исправления */
     html, body {
         overflow-x: hidden !important; 
         width: 100% !important;
     }
 
-    /* Все контейнеры делаем резиновыми */
-    .container, 
-    div[class*="container"] {
+    .container {
         width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 15px !important;  
-        padding-right: 15px !important;
+        padding: 0 15px !important;
         box-sizing: border-box !important;
     }
 
-    /* Картинки больше не вытолкнут экран */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-	
-    /* 🎯 2. Навигация */
     .top-bar {
         display: none !important;
     }
-	
+
+    /* 🎯 ШАПКА: Центрируем всё содержимое */
     .main-nav .container {
-        flex-direction: column !important; 
-        gap: 15px !important;
-        text-align: center !important;
-        padding: 15px 0 !important;
-    }
-
-    .logo {
-        justify-content: center !important;
-        margin-bottom: 5px;
-    }
-
-    .nav-links {
-        flex-direction: column !important;  
+        display: flex !important;
+        flex-direction: column !important; /* Логотип сверху, меню снизу */
         align-items: center !important;
-        gap: 12px !important; 
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    /* 💎 ЛОГОТИП: Картинка СЛЕВА, Текст СПРАВА (как ты и хотела!) */
+    .logo {
+        display: flex !important;
+        flex-direction: row !important; /* ЭТО заставляет их стоять в ряд */
+        align-items: center !important;    /* Выравнивает иконку и текст по одной линии */
+        justify-content: center !important; /* Ставит всю эту конструкцию по центру экрана */
+        gap: 15px !important;               /* Расстояние между бриллиантом и буквами */
         width: 100% !important;
     }
 
-    .nav-links li {
-        width: 100%;
-        text-align: center;
+    .logo img {
+        width: 60px !important; /* Настрой размер иконки под себя */
+        height: auto !important;
+        margin: 0 !important;   /* Убираем лишние отступы */
+    }
+
+    /* 📱 МЕНЮ: Ссылки в столбик под логотипом */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
     .nav-links li a {
-        font-size: 16px !important; 
+        font-size: 16px !important;
         display: block;
         padding: 5px 0;
     }
@@ -692,88 +692,61 @@ footer {
 
 /* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 480px) --- */
 @media screen and (max-width: 480px) {
-    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    /* 🛡️ Глобальные исправления */
     html, body {
         overflow-x: hidden !important; 
         width: 100% !important;
     }
 
-    /* Все контейнеры делаем резиновыми */
-    .container, 
-    div[class*="container"] {
+    .container {
         width: 100% !important;
-        max-width: 100% !important;
-        padding-left: 15px !important;  
-        padding-right: 15px !important;
+        padding: 0 15px !important;
         box-sizing: border-box !important;
     }
 
-    /* Картинки больше не вытолкнут экран */
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-	
-    /* 🎯 2. Навигация */
     .top-bar {
-        display: none !important; /* Убираем контакты */
+        display: none !important;
     }
 
-    /* Главный контейнер навигации — КОЛОНКА */
+    /* 🎯 ШАПКА: Центрируем всё содержимое */
     .main-nav .container {
         display: flex !important;
-        flex-direction: column !important; /* Ставим всё друг под другом */
-        align-items: center !important;    /* Центрируем всю колонку */
+        flex-direction: column !important; /* Логотип сверху, меню снизу */
+        align-items: center !important;
         justify-content: center !important;
-        padding: 30px 0 20px !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        gap: 20px !important;
     }
 
-    /* ЛОГОТИП: Тоже КОЛОНКА */
+    /* 💎 ЛОГОТИП: Картинка СЛЕВА, Текст СПРАВА (как ты и хотела!) */
     .logo {
         display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;    /* Центрирует картинку лого */
-        justify-content: center !important;
-        text-align: center !important;     /* Центрирует текстовый блок под лого */
+        flex-direction: row !important; /* ЭТО заставляет их стоять в ряд */
+        align-items: center !important;    /* Выравнивает иконку и текст по одной линии */
+        justify-content: center !important; /* Ставит всю эту конструкцию по центру экрана */
+        gap: 15px !important;               /* Расстояние между бриллиантом и буквами */
         width: 100% !important;
-        margin-bottom: 30px !important;    /* Отступ до меню */
-        margin-left: 0 !important;
-        margin-right: 0 !important;
     }
 
-    /* Принудительно центрируем картинку лого */
     .logo img {
-        margin: 0 auto !important;
-        display: block !important;
-        max-width: 120px !important; /* На мобилке — компактнее */
+        width: 60px !important; /* Настрой размер иконки под себя */
         height: auto !important;
+        margin: 0 !important;   /* Убираем лишние отступы */
     }
 
-    /* НАВИГАЦИЯ: МЕНЮ В СТОЛБИК */
+    /* 📱 МЕНЮ: Ссылки в столбик под логотипом */
     .nav-links {
         display: flex !important;
-        flex-direction: column !important; /* Ссылки друг под другом */
-        align-items: center !important;    /* Каждая ссылка строго по центру */
-        justify-content: center !important;
-        width: 100% !important;
-        padding: 0 !important;             /* Убираем стандартные отступы у ul */
-        margin: 0 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 0 !important;
         list-style: none !important;
-        gap: 15px !important;              /* Расстояние между ссылками */
-    }
-
-    .nav-links li {
-        width: 100% !important;
-        text-align: center !important;
-        margin: 0 !important;
     }
 
     .nav-links li a {
         font-size: 16px !important;
+        display: block;
         padding: 5px 0;
-        display: block !important; /* Кликабельная зона на всю ширину */
     }
 
     /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
