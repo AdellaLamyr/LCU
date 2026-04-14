@@ -546,11 +546,12 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+	    .top-bar {
+        display: none !important; /* Прячем полосу с контактами */
+    }
 
-    /* 🛡️ Глобальная защита от вылезания за правый край */
-    html, body {
-        overflow-x: hidden !important; 
-        width: 100% !important;
+    .container, .container-narrow {
+        padding: 0 15px !important;
     }
 
     /* 🎯 1. ШАПКА: Меню падает в столбик */
@@ -569,6 +570,27 @@ footer {
         gap: 10px !important;
     }
 
+    /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
+    .spec-hero h1 {
+        font-size: 24px !important;
+    }
+
+    .centered-title {
+        font-size: 22px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваные пробелы justify */
+    }
+
+    .project-grid {
+        max-width: 100% !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
 
     /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
     /* Твоя сетка клубов (career-grid-2x2) и галерея */
@@ -636,15 +658,19 @@ footer {
     }
 }
 
+/* =======================================================
+   ДЛЯ ТЕЛЕФОНОВ ДО 480px (И САМСУНГОВ)
+   ======================================================= */
 @media screen and (max-width: 480px) {
-
-    /* 🛡️ Глобальная защита от вылезания за правый край */
-    html, body {
-        overflow-x: hidden !important; 
-        width: 100% !important;
+	    .top-bar {
+        display: none !important; /* Прячем полосу с контактами */
     }
 
-   /* 🎯 1. ШАПКА: Меню падает в столбик */
+    .container, .container-narrow {
+        padding: 0 15px !important;
+    }
+
+    /* 🎯 1. ШАПКА: Меню падает в столбик */
     .main-nav .container {
         align-items: center !important; /* На мобилках выровняем по центру для красоты */
         text-align: center !important;
@@ -660,6 +686,27 @@ footer {
         gap: 10px !important;
     }
 
+    /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
+    .spec-hero h1 {
+        font-size: 24px !important;
+    }
+
+    .centered-title {
+        font-size: 22px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваные пробелы justify */
+    }
+
+    .project-grid {
+        max-width: 100% !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
 
 
     /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
