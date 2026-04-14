@@ -447,61 +447,93 @@ footer {
 }
 
 
-/* ОБЩИЙ АДАПТИВ ДЛЯ ТЕЛЕФОНОВ И ПЛАНШЕТОВ */
-@media screen and (max-width: 1024px) {
+/* =======================================================
+   ЕДИНЫЙ АДАПТИВНЫЙ БЛОК (768px и ниже)
+   ======================================================= */
+@media screen and (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+    /* 1. ШАПКА И ЛОГО (То, что мы починили) */
     .top-bar { display: none !important; }
 
     .main-nav .container {
         display: flex !important;
-        flex-direction: column !important; /* Меню уходит ПОД логотип */
-        align-items: center !important;    /* Всё по центру экрана */
-        gap: 15px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
         padding: 20px 10px !important;
     }
 
-    /* 💎 ВОТ ТУТ МАГИЯ: ЛОГОТИП (Картинка + Текст) */
     .logo {
         display: flex !important;
-        flex-direction: row !important;    /* КАРТИНКА И ТЕКСТ В ОДИН РЯД */
-        align-items: center !important;    /* Выравнивание по одной линии */
-        justify-content: center !important;/* Вся группа по центру экрана */
-        gap: 12px !important;              /* Расстояние между бриллиантом и текстом */
-        width: auto !important;
+        flex-direction: row !important; /* Лого слева, текст справа */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
     }
 
-    .logo img {
-        width: 55px !important; /* Уменьшили для мобилки */
-        height: auto !important;
-        flex-shrink: 0 !important;
-    }
+    .logo img { width: 55px !important; height: auto !important; }
 
-    /* Оформление текстового блока внутри логотипа */
-    .logo div, .logo .text-wrapper {
-        display: flex !important;
-        flex-direction: column !important; /* Строчки названия друг под другом */
-        text-align: left !important;       /* Но сами строчки прижаты к иконке */
-    }
-
-    /* МЕНЮ: Ссылки */
     .nav-links {
         display: flex !important;
-        flex-direction: row !important;    /* На планшетах в ряд */
-        flex-wrap: wrap !important;        /* Если не влезают — перенесутся */
-        justify-content: center !important;
-        gap: 15px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    /* 2. СЕТКИ СПЕЦИАЛЬНОСТЕЙ (career-grid-2x2) */
+    .career-grid-2x2, .life-gallery, .project-grid {
+        display: flex !important;
+        flex-direction: column !important; /* Всё в одну колонку */
+        align-items: center !important;
+        gap: 25px !important;
+        width: 100% !important;
+    }
+
+    /* 3. КАРТОЧКИ (Специальности, клубы, галерея) */
+    .club-card, .gallery-item, .project-card {
+        width: 100% !important;
+        max-width: 380px !important; /* Чтобы не были слишком огромными */
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+
+    .club-card img, .gallery-item img {
+        width: 100% !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
+    }
+
+    /* 4. ТЕКСТОВЫЕ БЛОКИ */
+    .spec-hero h1 { font-size: 24px !important; }
+    .text-block p { 
+        font-size: 15px !important; 
+        text-align: left !important; /* Удобно читать на телефоне */
+        line-height: 1.6 !important;
+    }
+
+    /* 5. ФУТЕР (Чиним вылеты за край) */
+    footer {
+        padding: 30px 15px !important;
+        text-align: center !important;
+    }
+
+    footer p, footer span {
+        display: block !important;
+        width: 100% !important;
+        font-size: 13px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        margin-bottom: 10px !important;
     }
 }
 
-/* ФИНАЛЬНЫЕ ПРАВКИ ДЛЯ УЗКИХ ТЕЛЕФОНОВ */
+/* Дополнительные мелкие правки для совсем узких экранов */
 @media screen and (max-width: 480px) {
-    .nav-links {
-        flex-direction: column !important; /* На совсем маленьких — меню в столбик */
-        gap: 10px !important;
-    }
-    
-    .logo img {
-        width: 45px !important; /* Еще чуть меньше на маленьких экранах */
-    }
-    
-    .logo h1 { font-size: 18px !important; } /* Чтобы название не ломало экран */
+    .logo img { width: 45px !important; }
+    .logo h1 { font-size: 18px !important; }
+    .neon-btn { width: 100% !important; padding: 12px !important; }
 }
