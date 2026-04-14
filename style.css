@@ -631,77 +631,75 @@ footer {
         white-space: normal !important; 
     }
 	
-/* 🎯 7. СЛАЙДЕР (Чиним высоту и стрелки) */
-    
-    /* Увеличиваем высоту, чтобы текст и стрелки не налезали друг на друга */
+/* 1. СЛАЙДЕР: Переходим на блочную модель */
     .hero-slider {
-        height: 550px !important; 
-        min-height: 550px !important;
+        height: auto !important; /* Убираем фиксированную высоту */
+        min-height: 500px !important;
         display: flex !important;
-        align-items: center !important;
+        flex-direction: column !important;
         justify-content: center !important;
+        align-items: center !important;
+        padding: 60px 15px !important; /* Внутренние отступы вместо позиционирования */
         position: relative !important;
     }
 
-    /* Убираем лишние отступы у текста и центрируем */
     .slider-content {
+        position: relative !important; /* ОТМЕНЯЕМ absolute */
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
         width: 100% !important;
-        padding: 0 15px !important;
-        text-align: center !important;
-        position: absolute !important;
-        top: 40% !important; /* Центрируем контент по вертикали */
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
         z-index: 5 !important;
+        margin-bottom: 40px !important; /* Место для стрелок внизу */
     }
 
     .slider-content h2 {
-        font-size: 24px !important;
+        font-size: 26px !important;
+        word-wrap: break-word !important;
         margin-bottom: 15px !important;
-        line-height: 1.2 !important;
     }
 
-    /* Поднимаем кнопку, чтобы она была доступна для клика */
-    .btn-more {
-        display: inline-block !important;
-        margin-top: 20px !important;
-        padding: 12px 25px !important;
-        position: relative !important;
-        z-index: 10 !important;
-    }
-
-    /* СТРЕЛКИ: Полная перезагрузка для Chrome */
+    /* 2. СТРЕЛКИ: Фиксируем их строго внизу */
     .sliderB > label {
-        top: auto !important; /* Сбрасываем центровку по вертикали */
-        bottom: 30px !important; /* Опускаем в самый низ */
+        top: auto !important;
+        bottom: 20px !important; /* Прижимаем к низу родителя */
         transform: none !important;
-        width: 50px !important;
-        height: 50px !important;
-        background: rgba(157, 80, 187, 0.4) !important; 
-        border: 2px solid #9d50bb !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        z-index: 20 !important;
-        cursor: pointer !important;
+        position: absolute !important;
     }
 
     /* Левая стрелка */
     .sliderB > input:checked + div + label {
-        left: 20% !important; /* Сдвигаем ближе к центру для удобства пальца */
+        left: 30px !important;
     }
 
     /* Правая стрелка */
     .sliderB > input:checked + div + label + label {
-        right: 20% !important;
+        right: 30px !important;
         left: auto !important;
     }
 
-    /* Чтобы иконки внутри стрелок были видны */
-    .sliderB > label::before, 
-    .sliderB > label::after {
-        font-size: 20px !important;
+    /* 3. ТЕКСТ (Специальности и О НАС): Убираем огромные пробелы */
+    .about-text, .specialties-grid, .spec-info {
+        text-align: center !important;
+    }
+
+    /* Исправляем разрыв слов и гигантские межстрочные интервалы */
+    h1, h2, h3 {
+        white-space: normal !important;
+        overflow-wrap: break-word !important;
+        line-height: 1.2 !important;
+    }
+
+    p {
+        text-align: center !important;
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Чтобы блоки не слипались */
+    section {
+        padding: 40px 15px !important;
     }
 }
 
