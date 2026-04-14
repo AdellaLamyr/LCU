@@ -446,94 +446,394 @@ footer {
     border-top: 1px solid #333;
 }
 
-
 /* =======================================================
-   ЕДИНЫЙ АДАПТИВНЫЙ БЛОК (768px и ниже)
+   ДЛЯ ПЛАНШЕТОВ И ЭКРАНОВ ДО 1024px
    ======================================================= */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
+    
+    /* 🛡️ Глобальная защита от вылезания за правый край */
     html, body {
         overflow-x: hidden !important; 
         width: 100% !important;
     }
-    /* 1. ШАПКА И ЛОГО (То, что мы починили) */
-    .top-bar { display: none !important; }
 
-    .main-nav .container {
-        display: flex !important;
+.main-nav .container {
+        flex-direction: column !important; /* Ставим элементы сверху вниз (Лого -> Меню) */
+        justify-content: flex-start !important;
+        align-items: flex-start !important; /* Всё равняем по левому краю */
+        gap: 20px !important; /* Расстояние между логотипом и меню */
+        padding: 15px 20px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    /* Логотип НЕ ТРОГАЕМ, он будет слева */
+    .logo {
+        justify-content: flex-start !important; 
+        width: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .nav-links {
+        flex-direction: row !important; /* 🔥 ССЫЛКИ СТРОГО В ОДИН РЯД! */
+        justify-content: flex-start !important; /* Меню тоже прижимаем влево */
+        align-items: center !important;
+        gap: 15px !important; /* Расстояние между пунктами меню */
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .nav-links li {
+        width: auto !important; /* Отменяем ширину 100% */
+    }
+
+    .nav-links li a {
+        font-size: 14px !important; /* Компактный размер для планшета */
+        padding: 5px 0 !important;
+        white-space: nowrap !important; /* Запрещаем перенос слов в ссылках */
+        margin-left: 0 !important; /* Убираем лишние отступы, если они были */
+    }
+
+
+    /* 2. Шапка секций (Hero) */
+    .spec-hero {
+        height: auto !important;
+        padding: 50px 20px !important;
+    }
+
+    .spec-hero h1 {
+        font-size: 28px !important;
+    }
+
+    /* 3. Сетка клубов 2х2: перестраиваем в одну колонку */
+    .career-grid-2x2 {
         flex-direction: column !important;
         align-items: center !important;
         gap: 20px !important;
-        padding: 20px 10px !important;
     }
 
-    .logo {
+    .club-card {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 500px !important; /* Ограничиваем ширину, чтоб не растягивались сосиской */
+    }
+
+    /* 4. Список ивентов: переносим текст под заголовок */
+    .advanced-event-list li {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+
+    .event-header {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+    }
+
+    .event-name {
+        white-space: normal !important; /* Разрешаем перенос длинных названий */
+    }
+
+    /* 5. Галерея: из 3 колонок делаем 2 */
+    .life-gallery {
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+
+    .gallery-item {
+        flex: 0 0 calc(50% - 10px) !important; /* По две фотки в ряд */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* 🛡️ Глобальные исправления */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    .container {
+        width: 100% !important;
+        padding: 0 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    .top-bar {
+        display: none !important;
+    }
+
+    /* 🎯 ШАПКА: Центрируем всё содержимое */
+    .main-nav .container {
         display: flex !important;
-        flex-direction: row !important; /* Лого слева, текст справа */
+        flex-direction: column !important; /* Логотип сверху, меню снизу */
         align-items: center !important;
         justify-content: center !important;
-        gap: 12px !important;
+        gap: 20px !important;
     }
 
-    .logo img { width: 55px !important; height: auto !important; }
+    /* 💎 ЛОГОТИП: Картинка СЛЕВА, Текст СПРАВА (как ты и хотела!) */
+    .logo {
+        display: flex !important;
+        flex-direction: row !important; /* ЭТО заставляет их стоять в ряд */
+        align-items: center !important;    /* Выравнивает иконку и текст по одной линии */
+        justify-content: center !important; /* Ставит всю эту конструкцию по центру экрана */
+        gap: 15px !important;               /* Расстояние между бриллиантом и буквами */
+        width: 100% !important;
+    }
 
+    .logo img {
+width: 60px !important; /* Настрой размер иконки под себя */
+        height: auto !important;
+        margin: 0 !important;   /* Убираем лишние отступы */
+    }
+
+    /* 📱 МЕНЮ: Ссылки в столбик под логотипом */
     .nav-links {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         gap: 10px !important;
+        padding: 0 !important;
+        list-style: none !important;
     }
 
-    /* 2. СЕТКИ СПЕЦИАЛЬНОСТЕЙ (career-grid-2x2) */
-    .career-grid-2x2, .life-gallery, .project-grid {
+    .nav-links li a {
+        font-size: 16px !important;
+        display: block;
+        padding: 5px 0;
+    }
+    /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
+    .spec-hero h1 {
+        font-size: 24px !important;
+    }
+
+    .centered-title {
+        font-size: 22px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваные пробелы justify */
+    }
+
+    .project-grid {
+        max-width: 100% !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
+
+    /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
+    /* Твоя сетка клубов (career-grid-2x2) и галерея */
+    .career-grid-2x2,
+    .life-gallery {
         display: flex !important;
-        flex-direction: column !important; /* Всё в одну колонку */
+        flex-direction: column !important; /* Всё строго в одну колонку */
         align-items: center !important;
-        gap: 25px !important;
+        gap: 30px !important;
         width: 100% !important;
     }
 
-    /* 3. КАРТОЧКИ (Специальности, клубы, галерея) */
-    .club-card, .gallery-item, .project-card {
+    /* Сами карточки */
+    .club-card,
+    .gallery-item {
+        flex: 0 0 auto !important;
         width: 100% !important;
-        max-width: 380px !important; /* Чтобы не были слишком огромными */
-        margin: 0 auto !important;
-        text-align: center !important;
+        max-width: 350px !important; /* Ограничиваем, чтобы не были на весь экран */
+        text-align: center !important; /* Центрируем текст внутри */
+        display: flex !important;
+        flex-direction: column !important; /* Внутри карточки всё тоже сверху вниз */
+        align-items: center !important;
+        padding: 20px !important;
     }
 
-    .club-card img, .gallery-item img {
+    /* Изображения в карточках */
+    .gallery-item img,
+    .club-card img {
         width: 100% !important;
-        height: 220px !important;
-        object-fit: cover !important;
-        border-radius: 10px !important;
+        height: 200px !important;
+        object-fit: cover !important; /* Картинка не сплющится */
+        border-radius: 8px !important;
+        margin-bottom: 15px !important; /* Отступ под фото */
     }
 
-    /* 4. ТЕКСТОВЫЕ БЛОКИ */
-    .spec-hero h1 { font-size: 24px !important; }
-    .text-block p { 
-        font-size: 15px !important; 
-        text-align: left !important; /* Удобно читать на телефоне */
-        line-height: 1.6 !important;
+    /* Названия под фото */
+    .club-card h4 {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
     }
 
-    /* 5. ФУТЕР (Чиним вылеты за край) */
+    /* Кнопка под названием */
+    .neon-btn {
+        width: auto !important;
+        padding: 10px 30px !important;
+        font-size: 14px !important;
+    }
+
+
+    /* 🎯 3. ФУТЕР (Переносим текст, чтобы не убегал за экран) */
     footer {
-        padding: 30px 15px !important;
+        padding: 20px 15px !important;
         text-align: center !important;
     }
 
-    footer p, footer span {
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important; /* Разрешаем перенос на новую строку */
+        word-wrap: break-word !important; /* Ломаем длинные слова */
         display: block !important;
         width: 100% !important;
-        font-size: 13px !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-        margin-bottom: 10px !important;
+        line-height: 1.5 !important;
     }
 }
 
-/* Дополнительные мелкие правки для совсем узких экранов */
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 480px) --- */
 @media screen and (max-width: 480px) {
-    .logo img { width: 45px !important; }
-    .logo h1 { font-size: 18px !important; }
-    .neon-btn { width: 100% !important; padding: 12px !important; }
+    /* 🛡️ Глобальные исправления */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    .container {
+        width: 100% !important;
+        padding: 0 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    .top-bar {
+        display: none !important;
+    }
+
+    /* 🎯 ШАПКА: Центрируем всё содержимое */
+    .main-nav .container {
+        display: flex !important;
+        flex-direction: column !important; /* Логотип сверху, меню снизу */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    /* 💎 ЛОГОТИП: Картинка СЛЕВА, Текст СПРАВА (как ты и хотела!) */
+    .logo {
+        display: flex !important;
+        flex-direction: row !important; /* ЭТО заставляет их стоять в ряд */
+        align-items: center !important;    /* Выравнивает иконку и текст по одной линии */
+        justify-content: center !important; /* Ставит всю эту конструкцию по центру экрана */
+        gap: 15px
+!important;               /* Расстояние между бриллиантом и буквами */
+        width: 100% !important;
+    }
+
+    .logo img {
+        width: 60px !important; /* Настрой размер иконки под себя */
+        height: auto !important;
+        margin: 0 !important;   /* Убираем лишние отступы */
+    }
+
+    /* 📱 МЕНЮ: Ссылки в столбик под логотипом */
+    .nav-links {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        list-style: none !important;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important;
+        display: block;
+        padding: 5px 0;
+    }
+
+    /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
+    .spec-hero h1 {
+        font-size: 24px !important;
+    }
+
+    .centered-title {
+        font-size: 22px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваные пробелы justify */
+    }
+
+    .project-grid {
+        max-width: 100% !important;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
+
+
+    /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
+    /* Твоя сетка клубов (career-grid-2x2) и галерея */
+    .career-grid-2x2,
+    .life-gallery {
+        display: flex !important;
+        flex-direction: column !important; /* Всё строго в одну колонку */
+        align-items: center !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    /* Сами карточки */
+    .club-card,
+    .gallery-item {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 350px !important; /* Ограничиваем, чтобы не были на весь экран */
+        text-align: center !important; /* Центрируем текст внутри */
+        display: flex !important;
+        flex-direction: column !important; /* Внутри карточки всё тоже сверху вниз */
+        align-items: center !important;
+        padding: 20px !important;
+    }
+
+    /* Изображения в карточках */
+    .gallery-item img,
+    .club-card img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important; /* Картинка не сплющится */
+        border-radius: 8px !important;
+        margin-bottom: 15px !important; /* Отступ под фото */
+    }
+
+    /* Названия под фото */
+    .club-card h4 {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Кнопка под названием */
+    .neon-btn {
+        width: auto !important;
+        padding: 10px 30px !important;
+        font-size: 14px !important;
+    }
+
+
+    /* 🎯 3. ФУТЕР (Переносим текст, чтобы не убегал за экран) */
+    footer {
+        padding: 20px 15px !important;
+        text-align: center !important;
+    }
+
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important; /* Разрешаем перенос на новую строку */
+        word-wrap: break-word !important; /* Ломаем длинные слова */
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.5 !important;
+    }
 }
