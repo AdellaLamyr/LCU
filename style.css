@@ -536,85 +536,6 @@ footer {
         padding: 5px 0;
     }
 	
-    /* 🎯 3. Слайдер (Адаптация под мобильные) */
-@media screen and (max-width: 480px) {
-    .hero-slider {
-        height: 450px !important; /* Даем фиксированную высоту, чтобы контент влез */
-        min-height: 400px !important;
-        padding: 0 !important;
-        position: relative;
-        overflow: hidden !important;
-    }
-
-    .sliderB {
-        height: 100% !important;
-    }
-
-    /* Исправляем отображение слайда */
-    .sliderB > .slide-item {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        height: 100% !important;
-        padding: 20px !important;
-    }
-
-    /* Контент внутри слайдера */
-    .slider-content {
-        padding: 0 40px !important; /* Уменьшаем боковые поля, чтобы влез текст */
-        width: 100% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .slider-content h2 {
-        font-size: 20px !important; /* Чуть крупнее для читабельности */
-        margin-bottom: 15px !important;
-        line-height: 1.2;
-    }
-
-    .slider-bullets {
-        text-align: left !important;
-        margin-bottom: 20px !important;
-    }
-
-    .slider-bullets p {
-        font-size: 13px !important;
-        margin-bottom: 8px !important;
-        line-height: 1.4 !important;
-    }
-
-    /* Кнопка "Узнать больше" */
-    .btn-more {
-        padding: 10px 20px !important;
-        font-size: 14px !important;
-    }
-
-    /* СТРЕЛКИ: делаем их меньше и разносим к краям */
-    .sliderB > input:checked + div + label, 
-    .sliderB > input:checked + div + label + label {
-        width: 35px !important;
-        height: 35px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        background: rgba(0, 0, 0, 0.7) !important; /* Темнее, чтобы не сливались */
-    }
-
-    .sliderB > input:checked + div + label {
-        left: 5px !important; /* Почти вплотную к краю */
-    }
-
-    .sliderB > input:checked + div + label + label {
-        right: 5px !important;
-    }
-
-    .sliderB > input:checked + div + label:after, 
-    .sliderB > input:checked + div + label + label:after {
-        font-size: 16px !important;
-    }
-}
-
     /* 🎯 4. Специальности: По одному в ряд */
     .specialties-grid {
         grid-template-columns: 1fr !important; 
@@ -711,6 +632,45 @@ footer {
     }
 }
 
+/* 1. Увеличиваем высоту слайдера, чтобы влезли стрелки внизу */
+    .hero-slider {
+        height: 520px !important; 
+    }
+
+    /* 2. Центрируем контент и даем отступ снизу под стрелки */
+    .slider-content {
+        padding: 0 20px !important; /* Больше места для текста */
+        margin-top: -40px !important; /* Немного поднимаем текст выше */
+    }
+
+    /* 3. СТРЕЛКИ: Перемещаем их вниз */
+    .sliderB > input:checked + div + label, 
+    .sliderB > input:checked + div + label + label {
+        top: auto !important; /* Отменяем центровку по вертикали */
+        bottom: 15px !important; /* Прижимаем к нижнему краю слайдера */
+        transform: none !important;
+        width: 45px !important;
+        height: 45px !important;
+        background: rgba(157, 80, 187, 0.2) !important; /* Делаем их полупрозрачными фиолетовыми */
+        border: 1px solid #9d50bb !important;
+    }
+
+    /* Левая стрелка — чуть левее центра */
+    .sliderB > input:checked + div + label {
+        left: calc(50% - 55px) !important; 
+    }
+
+    /* Правая стрелка — чуть правее центра */
+    .sliderB > input:checked + div + label + label {
+        right: calc(50% - 55px) !important;
+        left: auto !important;
+    }
+
+    /* 4. Корректируем кнопку, чтобы она не перекрывалась */
+    .btn-more {
+        margin-bottom: 60px !important; /* Поднимаем кнопку над стрелками */
+    }
+}
 
 @media screen and (max-width: 1024px) {
 	    html, body {
