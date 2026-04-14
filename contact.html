@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+	<meta name="keywords" content="адрес LCU, контакты Люмина Креатив, университет Одесса адрес, 
+	приемная комиссия LCU, как доехать, Lumina Creative University телефон, Lumina Creative University почта, Lumina Creative University email">
+	<meta name="description" content="Свяжитесь с нами для поступления или консультации. Адрес LCU 
+	в Одессе, номера телефонов приемной комиссии и форма обратной связи на одной странице.">
+	<meta name="author" content="Adella Lamyr">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты (LCU)</title>
+	<link rel="icon" type="image/x-icon" href="logo.png">
+    <link rel="stylesheet" href="contact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="container">
+            <span><img src="geo.png" width="30" height="30" alt="Address"> г. Одесса, ул. Неоновая, 77</span>
+            <span><img src="phonenum.png" width="30" height="30" alt="PhoneNumber"> +380 (67) 555-00-01</span>
+            <span><img src="email.png" width="40" height="30" alt="Email"> adm@lcu.edu.ua</span>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Lumina Logo">
+                <div class="logo-text">
+                    <h1>LUMINA</h1>
+                    <p>CREATIVE UNIVERSITY (LCU)</p>
+                    <small>WHERE IDEAS SHAPE YOUR FUTURE</small>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" >Главная</a></li>
+                <li><a href="aboutus.html">О нас</a></li>
+                <li class="dropdown">
+    <a href="specialities.html">Специальности</a>
+    <ul class="dropdown-menu">
+        <li><a href="spes1design.html">Креативный коммуникационный дизайн</a></li>
+        <li><a href="spes2ai.html">Цифровые технологии и ИИ</a></li>
+        <li><a href="spes3comm.html">СМИ и коммуникации</a></li>
+    </ul>
+</li>
+                <li><a href="studentlife.html">Студенческая жизнь</a></li>
+                <li><a href="studentproject.html">Студенческие проекты</a></li>
+                <li><a href="contact.html"  class="active">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+	
+	<div class="container-narrow">
+	<section class="project-card contacts-card">
+    <h2 class="centered-title">Связь с нами</h2>
+    <div class="text-block">
+        <p>У тебя есть вопросы или ты хочешь предложить сотрудничество? Мы всегда на связи!</p>
+    </div>
+    
+    <ul class="contacts-list">
+	
+	<li>
+            <div class="contact-item">
+			<span class="sparkle">✦</span>
+                <img src="calander.png" width="30" height="30" alt="Days">
+                <span>Пн-Пт 9:00-18:00</span>
+            </div>
+        </li>
+        
+        <li>
+            <div class="contact-item">
+			<span class="sparkle">✦</span>
+                <img src="geo.png" width="30" height="30" alt="Address">
+                <span>г. Одесса, ул. Неоновая, 77</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="contact-item">
+                <span class="sparkle">✦</span>
+                <img src="phonenum.png" width="30" height="30" alt="PhoneNumber">
+                <span>+380 (67) 555-00-01</span>
+            </div>
+        </li>
+
+        <li>
+            <div class="contact-item">
+            <span class="sparkle">✦</span>  
+			<img src="email.png" width="40" height="30" alt="Email">
+             <span>adm@lcu.edu.ua</span>  
+            </div>
+        </li>
+
+    </ul>
+</section>
+	
+<section class="spec-section">
+        <h2 class="centered-title">Есть вопросы?</h2>
+        <p class="form-subtitle">Заполните форму, и приемная комиссия университета ответит Вам</p>
+        
+        <form class="feedback-form" action="form.php" method="POST">
+            
+            <div class="form-group">
+                <label for="program">Интересующая Вас программа</label>
+                <select id="program" name="program" required>
+                    <option value="" disabled selected>Выберите программу...</option>
+                    <option value="design">Креативный коммуникационный дизайн</option>
+                    <option value="ai">Цифровые технологии и ИИ</option>
+                    <option value="media">СМИ и коммуникации</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Чем мы можем Вам помочь?</label>
+                <textarea id="message" name="message" rows="4" placeholder="Введите ваш вопрос, что вы хотите узнать или уточнить..." required></textarea>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="first-name">Имя</label>
+                    <input type="text" id="first-name" name="first-name" placeholder="Иван" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Фамилия</label>
+                    <input type="text" id="last-name" name="last-name" placeholder="Иванов" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Электронная почта</label>
+                    <input type="email" id="email" name="email" placeholder="example@lcu.edu.ua" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" value="+380" required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Отправить</button>
+        </form>
+    </section>
+
+</div>
+
+    <footer>
+        <p>Сайт создан для учебных целей и не является реальным учебным заведением. Все совпадения 
+		случайны. © 2026 Lumina Creative University</p>
+    </footer>
+	
+</body>
+</html>

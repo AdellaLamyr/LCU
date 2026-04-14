@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section h2 {
+    font-size: 36px;
+    color: #9d50bb; 
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.7); 
+}
+
+/* Верхняя панель */
+.top-bar {
+    background: #000;
+    padding: 10px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px;                   
+    align-items: center;
+}
+
+.top-bar span {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* Логотип и Навигация */
+.main-nav {
+    padding: 20px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    margin-right: 15px;
+}
+
+.logo-text h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: #00e5ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links li a.active, .nav-links li a:hover {
+    color: #ff00ff; 
+}
+
+.nav-links li.dropdown {
+    position: relative;
+}
+
+/* Стили для выпадающего окошка */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #0a0a0a;
+    border: 1px solid #333; 
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    
+    /* Делаем блок невидимым по умолчанию  */
+    opacity: 0;
+    visibility: hidden; /* Защищает от случайных кликов, пока блок прозрачный */
+    
+    /* Задаем скорость и плавность перехода */
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Селектор наведения (аналог .on-hover:hover + .hidden-block) */
+.nav-links li.dropdown:hover .dropdown-menu {
+    opacity: 1;          /* Делаем элемент полностью видимым */
+    visibility: visible;  /* Включаем его интерактивность */
+}
+
+/* Стили ссылок внутри выпадашки оставляем без изменений */
+.dropdown-menu li a {
+    color: #ccc !important;
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    display: block !important;
+    white-space: nowrap;
+    margin-left: 0 !important; 
+    transition: 1s;
+}
+
+.dropdown-menu li a:hover {
+    color: #ff00ff !important; 
+    background: #111;
+}
+
+.nav-links li.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+/* --- 3. ИСТОРИЯ --- */
+.about-hero {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.about-hero-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-hero p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+/* --- 4. СЛАЙДЕР КАМПУСА --- */
+/* Основное окно слайдера */
+.slider-window {
+    position: relative;
+    max-width: 1200px;
+    height: 500px; /* Фиксированная высота, чтобы слайдер не исчезал */
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #333;
+    background: #111; /* Фон, пока грузятся картинки */
+}
+
+/* Скрываем радиокнопки */
+.sliderB > input {
+    display: none;
+}
+
+/* Базовый стиль для стрелок (скрыты по умолчанию) */
+.sliderB > label {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #00e5ff;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: 0.3s;
+}
+
+/* Показываем стрелки только для АКТИВНОГО инпута */
+.sliderB > input:checked + .campus-slide + label,
+.sliderB > input:checked + .campus-slide + label + label {
+    display: flex;
+}
+
+/* Позиционирование стрелок */
+.sliderB > input:checked + .campus-slide + label { left: 20px; } /* Назад */
+.sliderB > input:checked + .campus-slide + label + label { right: 20px; } /* Вперед */
+
+/* Иконки стрелок */
+.sliderB > label:after {
+    font-size: 30px;
+}
+.lbl-prev:after { content: '‹'; }
+.lbl-next:after { content: '›'; }
+
+/* Слайды */
+.campus-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* Проявление активного слайда */
+.sliderB > input:checked + .campus-slide {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Текст внутри слайда */
+.campus-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    z-index: 5;
+    text-align: left;
+}
+.campus-info h3 { font-size: 32px; color: #00e5ff; margin-bottom: 10px; }
+.campus-info p { font-size: 18px; color: #fff; }
+
+/* Стилизация информационного блока (осталась твоей!) */
+.campus-info {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 30px;
+    border-left: 4px solid #00e5ff;
+    border-radius: 0 5px 5px 0;
+    max-width: 500px;
+    z-index: 5;
+}
+
+.campus-info h3 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.campus-info p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+
+/* --- ПРИНЦИПЫ --- */
+/* Основная секция принципов */
+.principles {
+    padding: 80px 0;
+    /* Гарантируем, что это Flex-контейнер */
+    display: flex;
+    /* Устанавливаем направление КОЛОНКА, чтобы элементы были друг под другом */
+    flex-direction: column;
+    /* Центрируем все элементы по горизонтали */
+    align-items: center;
+}
+
+/* Контейнер внутри, если он есть, тоже должен быть колонкой */
+.principles .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Занимаем всю ширину */
+}
+
+/* Стили для заголовка */
+.principles h2 {
+    text-align: center;
+    margin-bottom: 50px; /* Отступ вниз до карточек */
+    /* Твои стили для фиолетового неона */
+    font-size: 36px;
+    color: #9d50bb;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.7);
+}
+
+/* Сетка карточек (они остаются в ряд внутри своей сетки) */
+.principles-grid {
+    display: grid;
+    /* 4 колонки в ряд */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 60px; /* Отступ вниз до блока CTA */
+    width: 100%; /* Сетка занимает всю ширину контейнера */
+}
+
+/* Блок "Хочешь узнать больше" */
+.cta-block {
+    text-align: center;
+    background: #000;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid #ff00ff; /* Розовая рамка */
+    /* Центрируем этот блок внутри родителя */
+    align-self: center;
+    width: auto; /* Или fixed width, если нужно */
+}
+
+.principle-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.principle-card:hover {
+    border-color: #9d50bb;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.3);
+    transform: translateY(-5px);
+}
+
+.icon-wrap {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.principle-card h3 {
+    color: #00e5ff;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+.principle-card p {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* --- 6. КНОПКИ --- */
+.cta-block {
+    text-align: center;
+    background: #000;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid #ff00ff;
+}
+
+.cta-block h3 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-more {
+    background: #fff;
+    color: #9d50bb;
+    border: 2px solid transparent; /* Рамка есть, но она прозрачная */
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none; /* УБИРАЕТ ПОДЧЁРКИВАНИЕ */
+    display: inline-block; /* Чтобы отступы работали корректно */
+    transition: 0.3s;
+}
+
+.btn-more:hover {
+    background: #9d50bb;
+    color: #fff;
+}
+
+/* Убираем рамку у самого блока cta-block, если она тебе там не нужна постоянно */
+.cta-block {
+    text-align: center;
+    background: #000;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.cta-block:hover {
+    border-color: #ff00ff; /* РАМКА ПОЯВЛЯЕТСЯ ТОЛЬКО ТУТ */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5); /* Эффект свечения */
+}
+
+footer {
+    background: #000;
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #333;
+}
+
+.anim-show{
+	opacity:0;
+	transition:3s;
+	animation: show 3s 1;
+	animation-fill-mode: forwards;
+	animation-delay: 1s;
+}
+
+@keyframes show{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}

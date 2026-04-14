@@ -1,0 +1,468 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* Защита от случайного горизонтального скролла */
+}
+
+/* Резиновый контейнер */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px; /* Отступы по бокам, чтобы текст не прилипал к краям экрана */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Верхняя панель */
+.top-bar {
+    background: #000;
+    padding: 10px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px;                   
+    align-items: center;
+    flex-wrap: wrap; /* Чтобы контакты переносились на телефонах */
+}
+
+.top-bar span {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* Логотип и Навигация */
+
+/* Базовые правила для шапки (вне медиа-запросов) */
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Если ссылки не влезают, они просто перенесутся вниз, а не налезут друг на друга */
+    gap: 15px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap; /* Помогает ссылкам адаптироваться */
+    justify-content: flex-end;
+    gap: 15px; /* Вместо margin-left лучше использовать gap — так расстояния всегда ровные */
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li a {
+    margin: 0 !important; /* Сбрасываем старые маржины, если они были */
+    font-size: clamp(13px, 1.5vw, 16px); /* Магия! Шрифт будет сам плавно уменьшаться на меньших экранах */
+    white-space: nowrap; /* Запрещаем тексту ссылки рваться на две строки */
+}
+
+
+.main-nav {
+    padding: 20px 0;
+}
+
+.main-nav .container {
+    flex-wrap: wrap; /* Позволит меню упасть под логотип на мобилках */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    margin-right: 15px;
+}
+
+.logo-text h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; /* Чтобы ссылки не вылезали за экран */
+}
+
+.nav-links li a {
+    color: #00e5ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links li a.active, .nav-links li a:hover {
+    color: #ff00ff; 
+}
+
+.nav-links li.dropdown {
+    position: relative;
+}
+
+/* Стили для выпадающего окошка */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #0a0a0a;
+    border: 1px solid #333; 
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    
+    /* Делаем блок невидимым по умолчанию  */
+    opacity: 0;
+    visibility: hidden; /* Защищает от случайных кликов, пока блок прозрачный */
+    
+    /* Задаем скорость и плавность перехода */
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Селектор наведения (аналог .on-hover:hover + .hidden-block) */
+.nav-links li.dropdown:hover .dropdown-menu {
+    opacity: 1;          /* Делаем элемент полностью видимым */
+    visibility: visible;  /* Включаем его интерактивность */
+}
+
+/* Стили ссылок внутри выпадашки оставляем без изменений */
+.dropdown-menu li a {
+    color: #ccc !important;
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    display: block !important;
+    white-space: nowrap;
+    margin-left: 0 !important; 
+    transition: 1s;
+}
+
+.dropdown-menu li a:hover {
+    color: #ff00ff !important; 
+    background: #111;
+}
+
+.project-card contacts-card {
+    padding: 60px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.centered-title {
+    font-size: 32px;
+    color: #9d50bb;
+    text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.text-block {
+    text-align: justify;
+}
+
+.text-block p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify; /* Чтобы края текста были ровными */
+}
+
+.contacts-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 40px;
+}
+
+.contacts-list li {
+    background: rgba(255, 255, 255, 0.03); /* Очень тусклый фон для структуры */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Описание ровно ложится */
+    gap: 30px;
+    transition: 0.3s ease;
+}
+
+/* Эффект наведения на весь пункт списка */
+.contacts-list li:hover {
+    background: rgba(255, 0, 255, 0.05); /* Тусклое розовое свечение фона */
+    border-color: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Левая колонка: искра и название */
+.contact-item {
+    flex: 0 0 40%; /* Занимает ровно 40% ширины */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sparkle {
+    color: #ff00ff;
+    font-size: 20px;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+}
+
+/* Правая колонка: описание */
+.contact-item {
+    flex: 1; /* Занимает оставшееся место */
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 0 !important; /* Убираем отступ */
+    text-align: left !important; /* Всегда по левому краю */
+}
+
+/* Стили для формы обратной связи */
+.form-subtitle {
+    text-align: center;
+    color: #ccc;
+    font-size: 16px;
+    margin-bottom: 30px;
+    margin-top: -20px; /* Приподнимаем ближе к заголовку */
+}
+
+.feedback-form {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1; /* Делит строку поровну между полями */
+}
+
+.feedback-form label {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+/* Стили для всех текстовых полей и выпадающего списка */
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form input[type="tel"],
+.feedback-form select,
+.feedback-form textarea {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+    outline: none;
+}
+
+/* Эффект свечения при нажатии на поле */
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+    border-color: #00e5ff;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+    background: #151515;
+}
+
+/* Специфика для выпадающего списка в хроме */
+.feedback-form select option {
+    background: #0a0a0a;
+    color: #fff;
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    width: 100%;
+    background: #9d50bb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background: #b163d4;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.4);
+}
+
+.container-narrow {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer {
+    background: #000;
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #333;
+}
+
+/* =======================================================
+   ДЛЯ ПЛАНШЕТОВ И ЭКРАНОВ ДО 1024px
+   ======================================================= */
+@media screen and (max-width: 1024px) {
+    
+    /* 🛡️ Защита от горизонтального скролла */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    .main-nav .container {
+        flex-direction: column !important; /* Навигация этажами */
+        justify-content: flex-start !important;
+        align-items: flex-start !important; /* Прижимаем всё влево */
+        gap: 15px !important; 
+        padding: 15px 20px !important;
+    }
+
+    .logo {
+        justify-content: flex-start !important;
+    }
+
+    .nav-links {
+        flex-direction: row !important; /* Ссылки в один ряд */
+        justify-content: flex-start !important; 
+        gap: 15px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li a {
+        font-size: 14px !important;
+        white-space: nowrap !important;
+    }
+
+    /* 🎯 2. СПИСОК КОНТАКТОВ: Переносим текст под заголовок */
+    .contacts-list li {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+
+    .contact-item {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+    }
+}
+
+/* =======================================================
+   ДЛЯ ТЕЛЕФОНОВ ДО 480px (И САМСУНГОВ)
+   ======================================================= */
+@media screen and (max-width: 480px) {
+	    /* 🎯 1. ШАПКА: Логотип слева, меню под ним в ряд */
+    .top-bar {
+        display: none !important; /* Убираем черную полосу с контактами */
+    }
+
+    .container, .container-narrow {
+        padding: 0 15px !important;
+    }
+
+    /* 🎯 1. ШАПКА: Меню в столбик */
+    .main-nav .container {
+        align-items: center !important; /* Центрируем шапку на мобилках */
+        text-align: center !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+    }
+
+    .nav-links {
+        flex-direction: column !important; /* Меню вертикально */
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    /* 🎯 2. ТЕКСТЫ И ЗАГОЛОВКИ */
+    .centered-title {
+        font-size: 24px !important;
+    }
+
+    .form-subtitle {
+        font-size: 14px !important;
+        margin-top: -10px !important;
+    }
+
+    .text-block p {
+        font-size: 14px !important;
+        text-align: left !important; /* Убираем рваный justify */
+    }
+
+    /* 🎯 3. ФОРМА ОБРАТНОЙ СВЯЗИ */
+    .feedback-form {
+        padding: 25px 20px !important; /* Делаем форму менее громоздкой */
+    }
+
+    .form-row {
+        flex-direction: column !important; /* Поля Имя и Email встанут друг под другом */
+        gap: 0 !important; /* Сбрасываем боковой зазор */
+    }
+
+    .form-group {
+        margin-bottom: 15px !important;
+    }
+
+    /* 🎯 4. ФУТЕР: Защита от выпадения за экран */
+    footer {
+        padding: 20px 15px !important;
+    }
+
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.5 !important;
+    }
+}

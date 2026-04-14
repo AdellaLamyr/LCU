@@ -1,0 +1,658 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; /* Защита от случайного горизонтального скролла */
+}
+
+/* Резиновый контейнер */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px; /* Отступы по бокам, чтобы текст не прилипал к краям экрана */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Верхняя панель */
+.top-bar {
+    background: #000;
+    padding: 10px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px;                   
+    align-items: center;
+    flex-wrap: wrap; /* Чтобы контакты переносились на телефонах */
+}
+
+.top-bar span {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* Логотип и Навигация */
+
+/* Базовые правила для шапки (вне медиа-запросов) */
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Если ссылки не влезают, они просто перенесутся вниз, а не налезут друг на друга */
+    gap: 15px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap; /* Помогает ссылкам адаптироваться */
+    justify-content: flex-end;
+    gap: 15px; /* Вместо margin-left лучше использовать gap — так расстояния всегда ровные */
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li a {
+    margin: 0 !important; /* Сбрасываем старые маржины, если они были */
+    font-size: clamp(13px, 1.5vw, 16px); /* Магия! Шрифт будет сам плавно уменьшаться на меньших экранах */
+    white-space: nowrap; /* Запрещаем тексту ссылки рваться на две строки */
+}
+
+
+.main-nav {
+    padding: 20px 0;
+}
+
+.main-nav .container {
+    flex-wrap: wrap; /* Позволит меню упасть под логотип на мобилках */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    margin-right: 15px;
+}
+
+.logo-text h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; /* Чтобы ссылки не вылезали за экран */
+}
+
+.nav-links li a {
+    color: #00e5ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links li a.active, .nav-links li a:hover {
+    color: #ff00ff; 
+}
+
+.nav-links li.dropdown {
+    position: relative;
+}
+
+/* Стили для выпадающего окошка */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #0a0a0a;
+    border: 1px solid #333; 
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    
+    /* Делаем блок невидимым по умолчанию  */
+    opacity: 0;
+    visibility: hidden; /* Защищает от случайных кликов, пока блок прозрачный */
+    
+    /* Задаем скорость и плавность перехода */
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Селектор наведения (аналог .on-hover:hover + .hidden-block) */
+.nav-links li.dropdown:hover .dropdown-menu {
+    opacity: 1;          /* Делаем элемент полностью видимым */
+    visibility: visible;  /* Включаем его интерактивность */
+}
+
+/* Стили ссылок внутри выпадашки оставляем без изменений */
+.dropdown-menu li a {
+    color: #ccc !important;
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    display: block !important;
+    white-space: nowrap;
+    margin-left: 0 !important; 
+    transition: 1s;
+}
+
+.dropdown-menu li a:hover {
+    color: #ff00ff !important; 
+    background: #111;
+}
+
+.container-narrow {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.spec-hero {
+    padding: 80px 0;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+.spec-section {
+    padding: 60px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.text-block {
+    text-align: justify;
+}
+
+/* Сетка для клубов 2х2 */
+.career-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Карточка клуба */
+.career-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 30px;
+    transition: 0.3s ease;
+}
+
+.career-card p {
+    margin-bottom: 0;
+}
+
+.advanced-event-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 40px;
+}
+
+.advanced-event-list li {
+    background: rgba(255, 255, 255, 0.03); /* Очень тусклый фон для структуры */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Описание ровно ложится */
+    gap: 30px;
+    transition: 0.3s ease;
+}
+
+/* Эффект наведения на весь пункт списка */
+.advanced-event-list li:hover {
+    background: rgba(255, 0, 255, 0.05); /* Тусклое розовое свечение фона */
+    border-color: #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Левая колонка: искра и название */
+.event-header {
+    flex: 0 0 40%; /* Занимает ровно 40% ширины */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sparkle {
+    content: '✦';
+    color: #ff00ff;
+    font-size: 20px;
+    text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+}
+
+.event-name {
+    font-size: 16px;
+    font-weight: 700; 
+    color: #fff;
+    white-space: nowrap; /* Не рвется */
+    text-transform: uppercase;
+}
+
+/* Правая колонка: описание */
+.event-desc {
+    flex: 1; /* Занимает оставшееся место */
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 0 !important; /* Убираем отступ */
+    text-align: left !important; /* Всегда по левому краю */
+}
+
+/* Специальный зауженный контейнер, чтобы текст не разъезжался на весь экран */
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.student-life-page {
+    background-color: #000;
+    color: #fff;
+    padding-bottom: 100px;
+}
+
+/* Стили секций и заголовков */
+.spec-section {
+    margin-bottom: 70px; /* Большие отступы между блоками */
+}
+
+.centered-title {
+    font-size: 32px;
+    color: #9d50bb;
+    text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Главный баннер (Герой) */
+.spec-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('students2.png') center/cover !important;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #222;
+    margin-bottom: 50px;
+}
+
+.spec-hero h1 {
+    font-size: 36px;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.8);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.spec-hero .subtitle {
+    font-size: 18px;
+    color: #00e5ff;
+}
+
+/* Текст */
+.text-block p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify; /* Чтобы края текста были ровными */
+}
+
+/* Контейнер призыва к действию */
+.spec-section.call-to-action {
+    margin-top: 80px;
+    padding-bottom: 30px;
+}
+
+.call-to-action .text-block {
+    max-width: 650px;
+    margin: 0 auto 40px auto;
+}
+
+/* Принудительно выравниваем параграф по центру */
+.call-to-action p {
+    text-align: center !important;
+}
+
+/* Специальная обертка для кнопки, которая встанет по центру */
+.btn-wrap {
+    display: flex !important;
+    justify-content: center !important; /* Двигаем кнопку ровно в центр */
+    width: 100%;
+}
+
+/* Стили твоей неоновой кнопки */
+.neon-btn {
+    background: #fff;
+    color: #9d50bb;
+    border: none;
+    padding: 12px 40px; 
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+.neon-btn:hover {
+    background: #9d50bb;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(157, 80, 187, 0.5);
+}
+
+/* Сетка карточек клубов 2х2 (По твоему шаблону) */
+.career-grid-2x2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.club-card {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 25px;
+    flex: 0 0 calc(50% - 10px); /* Ровно половина ширины с учетом отступа */
+    transition: 0.3s;
+}
+
+.club-card h4 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.club-card p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.club-card:hover {
+    border-color: #00e5ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+/* =======================================================
+   НОВЫЙ БЛОК: ФОТОГАЛЕРЕЯ (В ПИКУ ДИЗАЙНУ)
+   ======================================================= */
+.life-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #222;
+    flex: 0 0 calc(33.333% - 14px); /* 3 фото в ряд с учетом зазоров */
+    transition: 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px; /* Фиксируем высоту, чтобы все было в одну линию */
+    object-fit: cover; /* Заставляем картинки не сплющиваться */
+    display: block;
+    transition: all 0.5s ease-out;
+}
+
+.gallery-item:hover {
+    border-color: #ff00ff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+footer {
+    background: #000;
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #333;
+}
+
+
+/* =======================================================
+   ДЛЯ ПЛАНШЕТОВ И ЭКРАНОВ ДО 1024px
+   ======================================================= */
+@media screen and (max-width: 1024px) {
+    
+    /* 🛡️ Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+.main-nav .container {
+        flex-direction: column !important; /* Ставим элементы сверху вниз (Лого -> Меню) */
+        justify-content: flex-start !important;
+        align-items: flex-start !important; /* Всё равняем по левому краю */
+        gap: 20px !important; /* Расстояние между логотипом и меню */
+        padding: 15px 20px !important;
+        flex-wrap: nowrap !important;
+    }
+
+    /* Логотип НЕ ТРОГАЕМ, он будет слева */
+    .logo {
+        justify-content: flex-start !important; 
+        width: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .nav-links {
+        flex-direction: row !important; /* 🔥 ССЫЛКИ СТРОГО В ОДИН РЯД! */
+        justify-content: flex-start !important; /* Меню тоже прижимаем влево */
+        align-items: center !important;
+        gap: 15px !important; /* Расстояние между пунктами меню */
+        width: 100% !important;
+        padding: 0 !important;
+    }
+
+    .nav-links li {
+        width: auto !important; /* Отменяем ширину 100% */
+    }
+
+    .nav-links li a {
+        font-size: 14px !important; /* Компактный размер для планшета */
+        padding: 5px 0 !important;
+        white-space: nowrap !important; /* Запрещаем перенос слов в ссылках */
+        margin-left: 0 !important; /* Убираем лишние отступы, если они были */
+    }
+
+
+    /* 2. Шапка секций (Hero) */
+    .spec-hero {
+        height: auto !important;
+        padding: 50px 20px !important;
+    }
+
+    .spec-hero h1 {
+        font-size: 28px !important;
+    }
+
+    /* 3. Сетка клубов 2х2: перестраиваем в одну колонку */
+    .career-grid-2x2 {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    .club-card {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 500px !important; /* Ограничиваем ширину, чтоб не растягивались сосиской */
+    }
+
+    /* 4. Список ивентов: переносим текст под заголовок */
+    .advanced-event-list li {
+        flex-direction: column !important;
+        gap: 10px !important;
+        align-items: flex-start !important;
+    }
+
+    .event-header {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+    }
+
+    .event-name {
+        white-space: normal !important; /* Разрешаем перенос длинных названий */
+    }
+
+    /* 5. Галерея: из 3 колонок делаем 2 */
+    .life-gallery {
+        justify-content: center !important;
+        gap: 15px !important;
+    }
+
+    .gallery-item {
+        flex: 0 0 calc(50% - 10px) !important; /* По две фотки в ряд */
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    /* 🛡️ Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    /* 🎯 1. ВЕРХНЯЯ ПАНЕЛЬ И НАВИГАЦИЯ (Как на прошлой странице) */
+    .top-bar {
+        display: none !important; /* Убираем черную полосу с контактами */
+    }
+
+    .main-nav .container {
+        flex-direction: column !important; /* Логотип и меню друг под другом */
+        gap: 15px !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        flex-direction: column !important; /* Ссылки меню в столбик */
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
+        margin-left: 0 !important; /* Убираем боковой отступ, если остался */
+    }
+
+
+    /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
+    /* Твоя сетка клубов (career-grid-2x2) и галерея */
+    .career-grid-2x2,
+    .life-gallery {
+        display: flex !important;
+        flex-direction: column !important; /* Всё строго в одну колонку */
+        align-items: center !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    /* Сами карточки */
+    .club-card,
+    .gallery-item {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 350px !important; /* Ограничиваем, чтобы не были на весь экран */
+        text-align: center !important; /* Центрируем текст внутри */
+        display: flex !important;
+        flex-direction: column !important; /* Внутри карточки всё тоже сверху вниз */
+        align-items: center !important;
+        padding: 20px !important;
+    }
+
+    /* Изображения в карточках */
+    .gallery-item img,
+    .club-card img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important; /* Картинка не сплющится */
+        border-radius: 8px !important;
+        margin-bottom: 15px !important; /* Отступ под фото */
+    }
+
+    /* Названия под фото */
+    .club-card h4 {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Кнопка под названием */
+    .neon-btn {
+        width: auto !important;
+        padding: 10px 30px !important;
+        font-size: 14px !important;
+    }
+
+
+    /* 🎯 3. ФУТЕР (Переносим текст, чтобы не убегал за экран) */
+    footer {
+        padding: 20px 15px !important;
+        text-align: center !important;
+    }
+
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important; /* Разрешаем перенос на новую строку */
+        word-wrap: break-word !important; /* Ломаем длинные слова */
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.5 !important;
+    }
+}
+}

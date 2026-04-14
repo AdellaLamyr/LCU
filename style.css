@@ -1,0 +1,813 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0a0a; 
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden; 
+}
+
+/* Резиновый контейнер */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Верхняя панель */
+.top-bar {
+    background: #000;
+    padding: 10px 0;
+    font-size: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: flex-start; 
+    gap: 40px;                   
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-bar span {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+}
+
+/* Логотип и Навигация */
+/* Базовые правила для шапки (вне медиа-запросов) */
+.main-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: flex-end;
+    gap: 15px; 
+    list-style: none;
+    padding: 0;
+}
+
+.nav-links li a {
+    margin: 0 !important; 
+    font-size: clamp(13px, 1.5vw, 16px); 
+    white-space: nowrap; 
+}
+
+.main-nav {
+    padding: 20px 0 20px 0;;
+}
+
+.main-nav .container {
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    margin-right: 15px;
+}
+
+.logo-text h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap; 
+}
+
+.nav-links li a {
+    color: #00e5ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.nav-links li a.active, .nav-links li a:hover {
+    color: #ff00ff; 
+}
+
+.nav-links li.dropdown {
+    position: relative;
+}
+
+/* Стили для выпадающего окошка */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #0a0a0a;
+    border: 1px solid #333; 
+    border-radius: 5px;
+    list-style: none;
+    padding: 10px 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden; 
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Селектор наведения (аналог .on-hover:hover + .hidden-block) */
+.nav-links li.dropdown:hover .dropdown-menu {
+    opacity: 1;         
+    visibility: visible; 
+}
+
+/* Стили ссылок внутри выпадашки оставляем без изменений */
+.dropdown-menu li a {
+    color: #ccc !important;
+    font-size: 14px !important;
+    padding: 10px 20px !important;
+    display: block !important;
+    white-space: nowrap;
+    margin-left: 0 !important; 
+    transition: 1s;
+}
+
+.dropdown-menu li a:hover {
+    color: #ff00ff !important; 
+    background: #111;
+}
+
+/* Слайдер */
+/* Общая секция под слайдер */
+.hero-slider {
+    width: 100%;
+    height: 50vh; 
+    background-color: #000;
+    padding: 0 !important; 
+    margin: 0 !important;
+}
+
+.sliderB {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Прячем дефолтные радиокнопки и лейблы */
+.sliderB > input {
+    display: none;
+}
+
+.sliderB > label {
+    display: none;
+}
+
+/* Показываем стрелки только у активного слайда */
+.sliderB > input:checked + div + label,
+.sliderB > input:checked + div + label + label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    border: 2px solid #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    transition: 0.3s;
+}
+
+/* Ховер на стрелочки */
+.sliderB > input:checked + div + label:hover,
+.sliderB > input:checked + div + label + label:hover {
+    background: #9d50bb;
+    border-color: #9d50bb;
+    box-shadow: 0 0 15px rgba(157, 80, 187, 0.6);
+}
+
+/* Контент стрелок (символы) */
+.sliderB > input:checked + div + label:after,
+.sliderB > input:checked + div + label + label:after {
+    font-size: 24px;
+    color: #fff;
+    line-height: 1;
+}
+
+/* Стрелка НАЗАД */
+.sliderB > input:checked + div + label {
+    left: 20px;
+}
+
+.sliderB > input:checked + div + label:after {
+    content: '\25C0'; /* Это Unicode код для ◀ */
+}
+
+/* Стрелка ВПЕРЁД */
+.sliderB > input:checked + div + label + label {
+    right: 20px;
+}
+
+.sliderB > input:checked + div + label + label:after {
+    content: '\25B6'; /* Это Unicode код для ▶ */
+}
+
+/* Базовые стили для слайдов */
+.sliderB > .slide-item {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0.9s;
+}
+
+/* Показываем выбранный слайд */
+.sliderB > input:checked + .slide-item {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.8s ease-out 0.1s, visibility 0.1s ease-out 0s;
+}
+
+/* Стилизация контента внутри слайда */
+.slider-content {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slider-content h2 {
+    font-size: clamp(24px, 5vw, 36px);
+    color: #9d50bb;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.7);
+}
+
+.slider-bullets {
+    margin: 10px 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.slider-bullets p {
+    font-size: clamp(14px, 3vw, 18px);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #ccc;
+    text-shadow: 1px 1px 3px #000;
+}
+
+.slider-content .btn-more {
+    margin-top: 20px;
+}
+
+section {
+    padding: 50px 0;
+}
+
+section h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    color: #9d50bb; 
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(157, 80, 187, 0.7); 
+}
+
+/* Кнопки */
+.btn-more {
+    background: #fff;
+    color: #9d50bb;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn-more:hover {
+    background: #9d50bb;
+    color: #fff;
+}
+
+/* Блок О НАС */
+section.about-section {
+    background-color: #0a0a0a !important;
+    width: 100% !important;
+    padding: 60px 0 !important; 
+}
+
+.about-us {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; 
+}
+
+.about-text {
+    flex: 1;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ffffff;
+}
+
+.about-image {
+    flex: 0 0 450px; 
+    max-width: 100%;
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+}
+
+/* Блок СПЕЦИАЛЬНОСТИ */
+.specialties .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+}
+
+.specialties {
+    background: #000; 
+}
+
+.specialties h2 {
+    text-align: center;
+}
+
+.specialties-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    margin-top: 40px;
+    width: 100%;
+}
+
+.specialty-card {
+    background: #0a0a0a;
+    border: 2px solid #333;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    text-decoration: none; 
+}
+
+.specialty-card img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.specialty-card h3 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: #fff;
+}
+
+.specialty-card.active, .specialty-card:hover {
+    border-color: #00e5ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+}
+
+/* СТУДЕНЧЕСКАЯ ЖИЗНЬ И ПРОЕКТЫ */
+.student-section-wrapper {
+    background-color: #000 !important; 
+    width: 100% !important;
+    padding: 60px 0 !important;
+}
+
+.student-life {
+    width: 100%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex; 
+    justify-content: space-between;
+    gap: 30px; 
+    align-items: flex-start; 
+}
+
+.student-block {
+    flex: 0 0 calc(50% - 15px);
+    background: #000; 
+    padding: 30px; 
+    border-radius: 5px;
+    text-align: center;
+}
+
+.student-block h2, 
+.student-block h3 {
+    white-space: nowrap !important; 
+    overflow: hidden !important;
+    text-overflow: ellipsis; 
+    color: #9d50bb;
+    margin-bottom: 20px;
+    margin-top: 0 !important;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(157, 80, 187, 0.5);
+}
+
+.student-block img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background: #000;
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #333;
+}
+
+.anim-show{
+    opacity:0;
+    transition:3s;
+    animation: show 3s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+@keyframes show{
+    0%{ opacity:0; }
+    100%{ opacity:1; }
+}
+
+@media screen and (max-width: 768px) {
+    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    /* Все контейнеры делаем резиновыми */
+    .container, 
+    div[class*="container"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;  
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Картинки больше не вытолкнут экран */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+	
+    /* 🎯 2. Навигация */
+    .top-bar {
+        display: none !important;
+    }
+	
+    .main-nav .container {
+        flex-direction: column !important; 
+        gap: 15px !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        flex-direction: column !important;  
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
+    }
+	
+    /* 🎯 3. Слайдер */
+	.hero-slider {
+        height: auto !important; /* Убираем фиксированную высоту, пусть подстраивается под контент */
+        min-height: 300px !important; /* Но задаем минимальную высоту, чтоб не сплющился */
+        padding: 30px 10px !important;
+        overflow: visible !important; /* Разрешаем показывать всё, что внутри */
+    }
+
+    /* 🔥 САМОЕ ГЛАВНОЕ ДЛЯ САМСУНГА: */
+    .hero-slider img,
+    .slider-item img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important; /* Картинка заполнит блок, но не будет сжиматься уродливо */
+        object-position: center !important; /* Центрируем картинку */
+    }
+  
+    .slider-content h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .slider-bullets p {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+    } 
+	
+    .slider-content {
+        padding: 0 60px !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .slider-bullets {
+        margin-left: 0; 
+        display: inline-block; 
+        text-align: left; 
+    }
+
+    .sliderB > input:checked + div + label, 
+    .sliderB > input:checked + div + label + label {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .sliderB > input:checked + div + label:after, 
+    .sliderB > input:checked + div + label + label:after {
+        font-size: 18px;
+    }
+
+    /* 🎯 4. Специальности: По одному в ряд */
+    .specialties-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 30px !important; 
+        padding: 0 10px !important; 
+        width: 100% !important;
+        max-width: 450px !important; 
+        margin: 40px auto !important; 
+    }
+    
+    .specialty-card {
+        box-sizing: border-box !important;
+        padding: 30px !important; 
+        width: 100% !important; 
+    }
+
+    .specialty-card img {
+        width: 60% !important; 
+        max-width: 150px !important;
+        height: auto !important;
+    }
+    
+    .specialty-card h3 {
+        font-size: 16px !important; 
+    }
+	
+    /* 🎯 5. Блок О Нас */
+.about-us {
+        display: flex !important;
+        flex-direction: column !important; /* Текст сверху, картинка снизу */
+        height: auto !important; /* 🔥 РАЗРЕШАЕМ РАСТЯГИВАТЬСЯ ПО ВЫСОТЕ */
+        min-height: auto !important;
+        overflow: visible !important; /* Убираем скрытие текста */
+        padding: 40px 0 !important; /* Отступы сверху и снизу */
+        gap: 30px !important; /* Расстояние между текстом и картинкой */
+    }
+
+    .about-text {
+        width: 100% !important;
+        height: auto !important;
+        text-align: center !important;
+        padding: 0 10px !important; /* Небольшие отступы по бокам для текста */
+    }
+
+    /* Делаем текст читаемым */
+    .about-text p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 20px !important;
+    }
+
+    .about-image {
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .about-image img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+    }
+
+    /* 🎯 6. СТУДЕНЧЕСКАЯ ЖИЗНЬ И ПРОЕКТЫ: Чиним правый край! */
+    .student-life {
+        display: flex !important;
+        flex-direction: column !important; /* 🔥 ПРИНУДИТЕЛЬНО В СТОЛБИК! */
+        align-items: center !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 30px !important;
+    }
+
+    .student-block {
+        width: 100% !important; 
+        max-width: 450px !important; /* Ограничиваем ширину, чтобы не растягивалось на весь экран */
+        flex: 0 0 auto !important; /* Отменяем старые flex: 1 1 45% */
+        box-sizing: border-box !important;
+        padding: 20px !important;
+    }
+
+    .student-block img {
+        width: 100% !important; 
+        height: auto !important;
+    }
+	
+    .student-block h2, 
+    .student-block h3 {
+        font-size: 20px !important; 
+        white-space: normal !important; 
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+	    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+ /* 🎯 1. ИСПРАВЛЕННЫЙ СЛАЙДЕР: Двигаем стрелки от краев внутрь экрана */
+.hero-slider {
+        height: 400px !important; /* Уменьшаем высоту слайдера для планшета */
+        padding: 40px 0 !important;
+    }
+
+    /* Жёстко возвращаем ПРАВУЮ стрелку в экран! */
+    .sliderB > input:checked + div + label + label {
+        right: 15px !important; /* Ровно 15px от правого края */
+        left: auto !important; /* Сбрасываем центрирование от CSS слайдера */
+    }
+    
+    /* Жёстко держим ЛЕВУЮ стрелку в экране */
+    .sliderB > input:checked + div + label {
+        left: 15px !important; /* Ровно 15px от левого края */
+    }
+
+    /* Сжимаем текст внутри слайдера, чтобы он не конфликтовал по высоте */
+    .slider-content h2 {
+        font-size: 26px !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .slider-bullets p {
+        font-size: 14px !important;
+    }
+
+    /* 🎯 2. БЛОК О НАС: Перестраиваем в одну колонку */
+    .about-us {
+        flex-direction: column !important; /* Текст теперь будет сверху, а картинка снизу */
+        text-align: center !important;
+        gap: 30px !important;
+        padding: 40px 20px !important;
+    }
+
+    .about-text {
+        width: 100% !important;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .about-image {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 600px; /* Чтобы фотка здания не была гигантской */
+        margin: 0 auto;
+    }
+
+    /* 🎯 3. СПЕЦИАЛЬНОСТИ: Из 3 колонок делаем 1 аккуратную колонку */
+    .specialties-grid {
+        grid-template-columns: 1fr !important; /* Строго по одному в ряд */
+        gap: 25px !important;
+        padding: 0 20px !important;
+        width: 100% !important;
+        max-width: 450px !important; /* Ограничиваем ширину карточки */
+        margin: 30px auto !important; /* Центрируем всю сетку */
+    }
+
+    .specialty-card {
+        width: 100% !important;
+        padding: 25px !important;
+    }
+
+    /* 🎯 4. СТУД. ЖИЗНЬ И ПРОЕКТЫ: Из 2 колонок делаем 1 */
+    .student-life {
+        flex-direction: column !important; /* Ставим блоки друг под друга */
+        align-items: center !important;
+        gap: 30px !important;
+        padding: 0 20px !important;
+    }
+
+    .student-block {
+        width: 100% !important;
+        max-width: 500px !important; /* Чтобы они не растягивались на весь экран */
+        flex: 0 0 auto !important;
+    }
+	
+	.student-block h2,
+    .student-block h3,
+    .student-life h2,
+    .student-life h3 {
+        font-size: 36px !important; /* Немного уменьшаем размер букв */
+        white-space: normal !important; /* Разрешаем перенос на новую строку */
+        overflow: visible !important; /* Убираем скрытие текста */
+        text-overflow: clip !important; /* Отменяем троеточие */
+        line-height: 1.3 !important; /* Делаем красивый отступ между строками */
+        text-align: center !important; /* Выравниваем по центру */
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+	
+	/* 🎯 6. ФУТЕР: Перестраиваем блоки, чтобы текст не сжимался */
+footer .container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 20px 15px !important;
+    }
+
+    .footer-section {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Успокаиваем текст, чтобы он НЕ шел в одну строку и НЕ убегал за экран */
+    .footer-section p, 
+    .footer-section span,
+    footer, 
+    footer a {
+        font-size: 12px !important;
+        line-height: 1.6 !important;
+        
+        /* 🔥 ВОТ ОНО РЕШЕНИЕ: */
+        white-space: normal !important; /* Разрешаем тексту рваться на новые строчки! */
+        word-wrap: break-word !important; /* Если слово слишком длинное — переносим его */
+        overflow-wrap: break-word !important; 
+        
+        display: block !important; /* Заставляем элементы вести себя как абзацы */
+        width: 100% !important;
+    }
+}
