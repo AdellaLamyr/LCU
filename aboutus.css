@@ -423,3 +423,119 @@ footer {
 		opacity:1;
 	}
 }
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ (до 480px) --- */
+@media screen and (max-width: 480px) {
+    /* 🛡️ 1. Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    /* Все контейнеры делаем резиновыми */
+    .container, 
+    div[class*="container"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 15px !important;  
+        padding-right: 15px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Картинки больше не вытолкнут экран */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+	
+    /* 🎯 2. Навигация */
+    .top-bar {
+        display: none !important;
+    }
+	
+    .main-nav .container {
+        flex-direction: column !important; 
+        gap: 15px !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        flex-direction: column !important;  
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
+    }
+
+    /* 2. Секция "Наша история" */
+    .about-hero { padding: 40px 0; }
+    .about-hero h2 { font-size: 24px; }
+    .about-hero p { font-size: 14px; line-height: 1.6; }
+
+    /* 3. СЛАЙДЕР КАМПУСА (Фикс наложения) */
+    .slider-window {
+        height: 480px !important; /* Увеличиваем высоту под контент */
+        margin: 20px 10px;
+    }
+    .campus-info {
+        bottom: 70px !important; /* Поднимаем текст выше стрелок */
+        left: 15px !important;
+        right: 15px !important;
+        padding: 15px !important;
+        max-width: 100% !important;
+    }
+    .campus-info h3 { font-size: 18px !important; }
+    .campus-info p { font-size: 12px !important; }
+
+    /* СТРЕЛКИ ВНИЗУ */
+    .sliderB > label {
+        display: none;
+        top: auto !important;
+        bottom: 15px !important; /* Фиксируем в самом низу */
+        transform: none !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(157, 80, 187, 0.3) !important;
+        border: 1px solid #9d50bb !important;
+    }
+    .sliderB > input:checked + .campus-slide + label {
+        display: flex !important;
+        left: calc(50% - 50px) !important; /* Центрируем пару стрелок */
+    }
+    .sliderB > input:checked + .campus-slide + label + label {
+        display: flex !important;
+        right: calc(50% - 50px) !important;
+    }
+
+    /* 4. СЕТКА ПРИНЦИПОВ (Карточки в 1 колонку) */
+    .principles-grid {
+        grid-template-columns: 1fr !important; /* Карточки одна под другой */
+        gap: 15px;
+    }
+    .principle-card { padding: 20px; }
+
+    /* 5. БЛОК КНОПОК (CTA) */
+    .cta-block { padding: 30px 15px; }
+    .cta-block h3 { font-size: 18px; }
+    .cta-buttons {
+        flex-direction: column; /* Кнопки в столбик */
+        gap: 10px;
+    }
+    .btn-more { width: 100%; text-align: center; }
+}
