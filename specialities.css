@@ -308,166 +308,96 @@ footer {
     }
 }
 
+/* 📱 ОБЩИЙ МОБИЛЬНЫЙ ПЛАН (до 768px и ниже) */
 @media screen and (max-width: 768px) {
-	    /* 🎯 1. ШАПКА: Логотип слева, меню под ним в ряд */
+    
+    /* 1. Глобальные правки */
     .top-bar {
-        display: none !important; /* Прячем полосу с контактами */
+        display: none !important;
     }
 
     .container {
         padding: 0 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
-    /* 🎯 1. ШАПКА: Меню в столбик */
+    /* 2. Навигация */
     .main-nav .container {
-        align-items: center !important; /* На мобилках выровняем по центру */
+        flex-direction: column !important;
+        align-items: center !important;
         text-align: center !important;
     }
 
-    .logo {
-        justify-content: center !important;
-    }
-
     .nav-links {
-        flex-direction: column !important; /* Ссылки друг под другом */
+        flex-direction: column !important;
         align-items: center !important;
         gap: 10px !important;
+        padding-top: 15px !important;
     }
 
-    /* 🎯 2. КАРТОЧКИ: Картинка -> Название -> Кнопка (Всё по одной линии) */
+    /* 3. КАРТОЧКИ (Список специальностей) */
     .specialties-list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         margin: 30px auto !important;
         gap: 25px !important;
     }
 
     .specialty-row-card {
-        flex-direction: column !important; /* Перестраиваем из строки в столбик! */
-        text-align: center !important; /* Выравниваем текст по центру */
+        flex-direction: column !important; /* В СТОЛБИК */
+        text-align: center !important;
         padding: 25px 20px !important;
+        width: 100% !important;
+        max-width: 400px !important; /* Чтобы карточка не была слишком широкой */
     }
 
     .spec-image {
-        margin-right: 0 !important; /* Убираем правый отступ */
-        margin-bottom: 20px !important; /* Делаем отступ снизу до текста */
+        margin-right: 0 !important;
+        margin-bottom: 20px !important;
         width: 100% !important;
-        flex: 0 0 auto !important;
     }
 
     .spec-image img {
-        max-height: 120px !important; /* Делаем картинку аккуратнее на маленьком экране */
+        max-height: 120px !important;
+        width: auto !important;
     }
 
     .spec-info h3 {
-        font-size: 22px !important;
-        margin-bottom: 15px !important;
+        font-size: 20px !important;
+        margin-bottom: 12px !important;
     }
 
     .spec-info p {
         font-size: 14px !important;
-        text-align: center !important; /* Текст тоже по центру */
+        line-height: 1.5 !important;
         margin-bottom: 20px !important;
     }
 
     .btn-more-spec {
-        width: 100% !important; /* На телефонах кнопка на всю ширину смотрится отлично */
+        width: 100% !important;
         max-width: 250px !important;
+        margin: 0 auto !important;
     }
 
-    /* 🎯 3. ФУТЕР: Защита от выпадения за экран */
-    footer {
-        padding: 20px 15px !important;
-    }
-
-    footer p, 
-    footer span, 
-    footer a {
-        font-size: 12px !important;
+    /* 4. ФУТЕР */
+    footer p, footer span, footer a {
+        font-size: 11px !important;
         white-space: normal !important;
         word-wrap: break-word !important;
         display: block !important;
-        width: 100% !important;
-        line-height: 1.5 !important;
+        line-height: 1.4 !important;
     }
 }
 
+/* 📱 ДОПОЛНИТЕЛЬНО ДЛЯ САМЫХ МАЛЕНЬКИХ ТЕЛЕФОНОВ (до 480px) */
 @media screen and (max-width: 480px) {
-	    /* 🎯 1. ШАПКА: Логотип слева, меню под ним в ряд */
-    .top-bar {
-        display: none !important; /* Прячем полосу с контактами */
-    }
-
-    .container {
-        padding: 0 15px !important;
-    }
-
-    /* 🎯 1. ШАПКА: Меню в столбик */
-    .main-nav .container {
-        align-items: center !important; /* На мобилках выровняем по центру */
-        text-align: center !important;
-    }
-
-    .logo {
-        justify-content: center !important;
-    }
-
-    .nav-links {
-        flex-direction: column !important; /* Ссылки друг под другом */
-        align-items: center !important;
-        gap: 10px !important;
-    }
-
-    /* 🎯 2. КАРТОЧКИ: Картинка -> Название -> Кнопка (Всё по одной линии) */
-    .specialties-list {
-        margin: 30px auto !important;
-        gap: 25px !important;
-    }
-
-    .specialty-row-card {
-        flex-direction: column !important; /* Перестраиваем из строки в столбик! */
-        text-align: center !important; /* Выравниваем текст по центру */
-        padding: 25px 20px !important;
-    }
-
-    .spec-image {
-        margin-right: 0 !important; /* Убираем правый отступ */
-        margin-bottom: 20px !important; /* Делаем отступ снизу до текста */
-        width: 100% !important;
-        flex: 0 0 auto !important;
-    }
-
-    .spec-image img {
-        max-height: 120px !important; /* Делаем картинку аккуратнее на маленьком экране */
-    }
-
     .spec-info h3 {
-        font-size: 22px !important;
-        margin-bottom: 15px !important;
+        font-size: 18px !important; /* Чуть меньше заголовок */
     }
-
-    .spec-info p {
-        font-size: 14px !important;
-        text-align: center !important; /* Текст тоже по центру */
-        margin-bottom: 20px !important;
-    }
-
-    .btn-more-spec {
-        width: 100% !important; /* На телефонах кнопка на всю ширину смотрится отлично */
-        max-width: 250px !important;
-    }
-
-    /* 🎯 3. ФУТЕР: Защита от выпадения за экран */
-    footer {
-        padding: 20px 15px !important;
-    }
-
-    footer p, 
-    footer span, 
-    footer a {
-        font-size: 12px !important;
-        white-space: normal !important;
-        word-wrap: break-word !important;
-        display: block !important;
-        width: 100% !important;
-        line-height: 1.5 !important;
+    
+    .specialty-row-card {
+        padding: 15px !important; /* Меньше отступы внутри */
     }
 }
