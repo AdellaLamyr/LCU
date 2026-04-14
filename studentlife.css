@@ -545,7 +545,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
 
     /* 🛡️ Глобальная защита от вылезания за правый край */
     html, body {
@@ -655,4 +655,114 @@ footer {
         line-height: 1.5 !important;
     }
 }
+
+@media screen and (max-width: 480px) {
+
+    /* 🛡️ Глобальная защита от вылезания за правый край */
+    html, body {
+        overflow-x: hidden !important; 
+        width: 100% !important;
+    }
+
+    /* 🎯 1. ВЕРХНЯЯ ПАНЕЛЬ И НАВИГАЦИЯ (Как на прошлой странице) */
+    .top-bar {
+        display: none !important; /* Убираем черную полосу с контактами */
+    }
+
+    .main-nav .container {
+        flex-direction: column !important; /* Логотип и меню друг под другом */
+        gap: 15px !important;
+        text-align: center !important;
+        padding: 15px 0 !important;
+    }
+
+    .logo {
+        justify-content: center !important;
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        flex-direction: column !important; /* Ссылки меню в столбик */
+        align-items: center !important;
+        gap: 12px !important; 
+        width: 100% !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        font-size: 16px !important; 
+        display: block;
+        padding: 5px 0;
+        margin-left: 0 !important; /* Убираем боковой отступ, если остался */
+    }
+
+
+    /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
+    /* Твоя сетка клубов (career-grid-2x2) и галерея */
+    .career-grid-2x2,
+    .life-gallery {
+        display: flex !important;
+        flex-direction: column !important; /* Всё строго в одну колонку */
+        align-items: center !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    /* Сами карточки */
+    .club-card,
+    .gallery-item {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        max-width: 350px !important; /* Ограничиваем, чтобы не были на весь экран */
+        text-align: center !important; /* Центрируем текст внутри */
+        display: flex !important;
+        flex-direction: column !important; /* Внутри карточки всё тоже сверху вниз */
+        align-items: center !important;
+        padding: 20px !important;
+    }
+
+    /* Изображения в карточках */
+    .gallery-item img,
+    .club-card img {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important; /* Картинка не сплющится */
+        border-radius: 8px !important;
+        margin-bottom: 15px !important; /* Отступ под фото */
+    }
+
+    /* Названия под фото */
+    .club-card h4 {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Кнопка под названием */
+    .neon-btn {
+        width: auto !important;
+        padding: 10px 30px !important;
+        font-size: 14px !important;
+    }
+
+
+    /* 🎯 3. ФУТЕР (Переносим текст, чтобы не убегал за экран) */
+    footer {
+        padding: 20px 15px !important;
+        text-align: center !important;
+    }
+
+    footer p, 
+    footer span, 
+    footer a {
+        font-size: 12px !important;
+        white-space: normal !important; /* Разрешаем перенос на новую строку */
+        word-wrap: break-word !important; /* Ломаем длинные слова */
+        display: block !important;
+        width: 100% !important;
+        line-height: 1.5 !important;
+    }
 }
