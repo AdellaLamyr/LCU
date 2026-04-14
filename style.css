@@ -631,43 +631,77 @@ footer {
         white-space: normal !important; 
     }
 	
-/* 1. Увеличиваем высоту слайдера, чтобы влезли стрелки внизу */
+/* 🎯 7. СЛАЙДЕР (Чиним высоту и стрелки) */
+    
+    /* Увеличиваем высоту, чтобы текст и стрелки не налезали друг на друга */
     .hero-slider {
-        height: 520px !important; 
+        height: 550px !important; 
+        min-height: 550px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
     }
 
-    /* 2. Центрируем контент и даем отступ снизу под стрелки */
+    /* Убираем лишние отступы у текста и центрируем */
     .slider-content {
-        padding: 0 20px !important; /* Больше места для текста */
-        margin-top: -40px !important; /* Немного поднимаем текст выше */
+        width: 100% !important;
+        padding: 0 15px !important;
+        text-align: center !important;
+        position: absolute !important;
+        top: 40% !important; /* Центрируем контент по вертикали */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 5 !important;
     }
 
-    /* 3. СТРЕЛКИ: Перемещаем их вниз */
-    .sliderB > input:checked + div + label, 
-    .sliderB > input:checked + div + label + label {
-        top: auto !important; /* Отменяем центровку по вертикали */
-        bottom: 15px !important; /* Прижимаем к нижнему краю слайдера */
+    .slider-content h2 {
+        font-size: 24px !important;
+        margin-bottom: 15px !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Поднимаем кнопку, чтобы она была доступна для клика */
+    .btn-more {
+        display: inline-block !important;
+        margin-top: 20px !important;
+        padding: 12px 25px !important;
+        position: relative !important;
+        z-index: 10 !important;
+    }
+
+    /* СТРЕЛКИ: Полная перезагрузка для Chrome */
+    .sliderB > label {
+        top: auto !important; /* Сбрасываем центровку по вертикали */
+        bottom: 30px !important; /* Опускаем в самый низ */
         transform: none !important;
-        width: 45px !important;
-        height: 45px !important;
-        background: rgba(157, 80, 187, 0.2) !important; /* Делаем их полупрозрачными фиолетовыми */
-        border: 1px solid #9d50bb !important;
+        width: 50px !important;
+        height: 50px !important;
+        background: rgba(157, 80, 187, 0.4) !important; 
+        border: 2px solid #9d50bb !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 20 !important;
+        cursor: pointer !important;
     }
 
-    /* Левая стрелка — чуть левее центра */
+    /* Левая стрелка */
     .sliderB > input:checked + div + label {
-        left: calc(50% - 55px) !important; 
+        left: 20% !important; /* Сдвигаем ближе к центру для удобства пальца */
     }
 
-    /* Правая стрелка — чуть правее центра */
+    /* Правая стрелка */
     .sliderB > input:checked + div + label + label {
-        right: calc(50% - 55px) !important;
+        right: 20% !important;
         left: auto !important;
     }
 
-    /* 4. Корректируем кнопку, чтобы она не перекрывалась */
-    .btn-more {
-        margin-bottom: 60px !important; /* Поднимаем кнопку над стрелками */
+    /* Чтобы иконки внутри стрелок были видны */
+    .sliderB > label::before, 
+    .sliderB > label::after {
+        font-size: 20px !important;
     }
 }
 
