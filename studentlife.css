@@ -553,40 +553,20 @@ footer {
         width: 100% !important;
     }
 
-    /* 🎯 1. ВЕРХНЯЯ ПАНЕЛЬ И НАВИГАЦИЯ (Как на прошлой странице) */
-    .top-bar {
-        display: none !important; /* Убираем черную полосу с контактами */
-    }
-
+    /* 🎯 1. ШАПКА: Меню падает в столбик */
     .main-nav .container {
-        flex-direction: column !important; /* Логотип и меню друг под другом */
-        gap: 15px !important;
+        align-items: center !important; /* На мобилках выровняем по центру для красоты */
         text-align: center !important;
-        padding: 15px 0 !important;
     }
 
     .logo {
         justify-content: center !important;
-        margin-bottom: 5px;
     }
 
     .nav-links {
-        flex-direction: column !important; /* Ссылки меню в столбик */
+        flex-direction: column !important; /* Ссылки друг под другом */
         align-items: center !important;
-        gap: 12px !important; 
-        width: 100% !important;
-    }
-
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links li a {
-        font-size: 16px !important; 
-        display: block;
-        padding: 5px 0;
-        margin-left: 0 !important; /* Убираем боковой отступ, если остался */
+        gap: 10px !important;
     }
 
 
@@ -664,41 +644,22 @@ footer {
         width: 100% !important;
     }
 
-    /* 🎯 1. ВЕРХНЯЯ ПАНЕЛЬ И НАВИГАЦИЯ (Как на прошлой странице) */
-    .top-bar {
-        display: none !important; /* Убираем черную полосу с контактами */
-    }
-
+   /* 🎯 1. ШАПКА: Меню падает в столбик */
     .main-nav .container {
-        flex-direction: column !important; /* Логотип и меню друг под другом */
-        gap: 15px !important;
+        align-items: center !important; /* На мобилках выровняем по центру для красоты */
         text-align: center !important;
-        padding: 15px 0 !important;
     }
 
     .logo {
         justify-content: center !important;
-        margin-bottom: 5px;
     }
 
     .nav-links {
-        flex-direction: column !important; /* Ссылки меню в столбик */
+        flex-direction: column !important; /* Ссылки друг под другом */
         align-items: center !important;
-        gap: 12px !important; 
-        width: 100% !important;
+        gap: 10px !important;
     }
 
-    .nav-links li {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-links li a {
-        font-size: 16px !important; 
-        display: block;
-        padding: 5px 0;
-        margin-left: 0 !important; /* Убираем боковой отступ, если остался */
-    }
 
 
     /* 🎯 2. НАШИ СПЕЦИАЛЬНОСТИ (Картинка -> Название -> Кнопка) */
