@@ -556,20 +556,46 @@ footer {
 
     /* 🎯 1. ШАПКА: Меню падает в столбик */
     .main-nav .container {
-        align-items: center !important; /* На мобилках выровняем по центру для красоты */
+        display: flex !important;
+        flex-direction: column !important; /* Ставим элементы в колонку */
+        align-items: center !important;    /* Центрируем по горизонтали */
+        justify-content: center !important;
         text-align: center !important;
+        padding: 20px 0 !important;
     }
 
     .logo {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;    /* Центрирует картинку лого */
         justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;    /* Отступ до ссылок меню */
+        text-align: center !important;
+    }
+
+    /* Если логотип — это картинка, принудительно центрируем её */
+    .logo img {
+        margin: 0 auto !important;
+        display: block !important;
     }
 
     .nav-links {
-        flex-direction: column !important; /* Ссылки друг под другом */
-        align-items: center !important;
-        gap: 10px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Ссылки в столбик */
+        align-items: center !important;    /* Каждая ссылка по центру */
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
     }
 
+    .nav-links li {
+        width: 100% !important;
+        text-align: center !important;
+    }
     /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
     .spec-hero h1 {
         font-size: 24px !important;
@@ -672,18 +698,45 @@ footer {
 
     /* 🎯 1. ШАПКА: Меню падает в столбик */
     .main-nav .container {
-        align-items: center !important; /* На мобилках выровняем по центру для красоты */
+        display: flex !important;
+        flex-direction: column !important; /* Ставим элементы в колонку */
+        align-items: center !important;    /* Центрируем по горизонтали */
+        justify-content: center !important;
         text-align: center !important;
+        padding: 20px 0 !important;
     }
 
     .logo {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;    /* Центрирует картинку лого */
         justify-content: center !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;    /* Отступ до ссылок меню */
+        text-align: center !important;
+    }
+
+    /* Если логотип — это картинка, принудительно центрируем её */
+    .logo img {
+        margin: 0 auto !important;
+        display: block !important;
     }
 
     .nav-links {
-        flex-direction: column !important; /* Ссылки друг под другом */
-        align-items: center !important;
-        gap: 10px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Ссылки в столбик */
+        align-items: center !important;    /* Каждая ссылка по центру */
+        justify-content: center !important;
+        width: 100% !important;
+        gap: 15px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    .nav-links li {
+        width: 100% !important;
+        text-align: center !important;
     }
 
     /* 🎯 2. КОНТЕНТ И ТЕКСТЫ */
