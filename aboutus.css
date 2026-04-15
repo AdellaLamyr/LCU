@@ -507,7 +507,7 @@ footer {
     .sliderB > label {
         display: none;
         top: auto !important;
-        bottom: 15px !important; /* Фиксируем в самом низу */
+        bottom: center !important; /* Фиксируем в самом низу */
         transform: none !important;
         width: 40px !important;
         height: 40px !important;
