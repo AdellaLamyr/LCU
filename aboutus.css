@@ -488,39 +488,50 @@ footer {
     .about-hero h2 { font-size: 24px; }
     .about-hero p { font-size: 14px; line-height: 1.6; }
 
-    /* 3. СЛАЙДЕР КАМПУСА (Фикс наложения) */
+    /* 3. СЛАЙДЕР КАМПУСА (Фикс стрелок и текста) */
     .slider-window {
-        height: 480px !important; /* Увеличиваем высоту под контент */
-        margin: 20px 10px;
+        height: 400px !important; /* Оптимальная высота для мобилок */
+        margin: 20px 0;
     }
-    .campus-info {
-        bottom: 70px !important; /* Поднимаем текст выше стрелок */
-        left: 15px !important;
-        right: 15px !important;
-        padding: 15px !important;
-        max-width: 100% !important;
-    }
-    .campus-info h3 { font-size: 18px !important; }
-    .campus-info p { font-size: 12px !important; }
 
-    /* СТРЕЛКИ ВНИЗУ */
+    .campus-info {
+        bottom: 20px !important; /* Прижимаем текст вниз */
+        left: 10px !important;
+        right: 10px !important;
+        padding: 10px !important;
+        width: auto !important;
+        background: rgba(0, 0, 0, 0.7) !important; /* Темный фон для читаемости */
+    }
+
+    /* ВОЗВРАЩАЕМ СТРЕЛКИ ПО БОКАМ */
     .sliderB > label {
-        display: none;
-        top: auto !important;
-        transform: none !important;
+        top: 50% !important; /* Ровно посередине высоты */
+        transform: translateY(-50%) !important;
         width: 40px !important;
         height: 40px !important;
-        background: rgba(157, 80, 187, 0.3) !important;
-        border: 1px solid #9d50bb !important;
+        display: none; /* Прячем все */
     }
-    .sliderB > input:checked + .campus-slide + label {
-        display: flex !important;
-        left: calc(50% - 50px) !important; /* Центрируем пару стрелок */
-    }
+
+    /* Показываем только стрелки активного слайда */
+    .sliderB > input:checked + .campus-slide + label,
     .sliderB > input:checked + .campus-slide + label + label {
-        display: flex !important;
-        right: calc(50% - 50px) !important;
+        display: flex !important; /* Показываем активные */
+        position: absolute !important;
+        z-index: 15 !important;
     }
+
+    /* Левая стрелка */
+    .sliderB > input:checked + .campus-slide + label {
+        left: 10px !important;
+    }
+
+    /* Правая стрелка */
+    .sliderB > input:checked + .campus-slide + label + label {
+        right: 10px !important;
+    }
+
+    .campus-info h3 { font-size: 16px !important; }
+    .campus-info p { font-size: 11px !important; }
 
     /* 4. СЕТКА ПРИНЦИПОВ (Карточки в 1 колонку) */
     .principles-grid {
