@@ -631,15 +631,15 @@ footer {
         white-space: normal !important; 
     }
 	
-/* 1. СЛАЙДЕР: Твоя блочная модель (768px и 480px) */
+/* 1. СЛАЙДЕР: Твоя блочная модель */
 .hero-slider {
     height: auto !important; 
-    min-height: 550px !important; /* 🔥 ЭТО ГЛАВНОЕ: чтобы слайдер был виден у всех */
+    min-height: 520px !important; /* Гарантия видимости блока */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 60px 15px !important; 
+    padding: 40px 15px 80px 15px !important; /* Увеличили нижний отступ для стрелок */
     position: relative !important;
 }
 
@@ -650,32 +650,32 @@ footer {
     transform: none !important;
     width: 100% !important;
     z-index: 5 !important;
-    margin-bottom: 40px !important; 
+    margin-bottom: 20px !important; 
 }
 
 .slider-content h2 {
-    font-size: 26px !important;
+    font-size: 24px !important;
     word-wrap: break-word !important;
     margin-bottom: 15px !important;
 }
 
-/* 2. СТРЕЛКИ: Возвращаем "как обычно" по бокам */
+/* 2. СТРЕЛКИ: Оставляем их внизу, но делаем их аккуратными */
 .sliderB > label {
-    top: 50% !important; /* Центрируем по вертикали */
-    bottom: auto !important; 
-    transform: translateY(-50%) !important;
+    top: auto !important;
+    bottom: 20px !important; /* Прижимаем к низу, чтобы не мешали тексту */
+    transform: none !important;
     position: absolute !important;
     z-index: 10 !important;
 }
 
 /* Левая стрелка */
 .sliderB > input:checked + div + label {
-    left: 20px !important; /* Отступ от левого края */
+    left: 30px !important;
 }
 
 /* Правая стрелка */
 .sliderB > input:checked + div + label + label {
-    right: 20px !important; /* Отступ от правого края */
+    right: 30px !important;
     left: auto !important;
 }
     /* 3. ТЕКСТ (Специальности и О НАС): Убираем огромные пробелы */
@@ -830,15 +830,15 @@ footer .container {
 }
 
 @media screen and (max-width: 480px) {
-/* 1. СЛАЙДЕР: Твоя блочная модель (768px и 480px) */
+/* 1. СЛАЙДЕР: Твоя блочная модель */
 .hero-slider {
     height: auto !important; 
-    min-height: 550px !important; /* 🔥 ЭТО ГЛАВНОЕ: чтобы слайдер был виден у всех */
+    min-height: 520px !important; /* Гарантия видимости блока */
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
     align-items: center !important;
-    padding: 60px 15px !important; 
+    padding: 40px 15px 80px 15px !important; /* Увеличили нижний отступ для стрелок */
     position: relative !important;
 }
 
@@ -849,32 +849,32 @@ footer .container {
     transform: none !important;
     width: 100% !important;
     z-index: 5 !important;
-    margin-bottom: 40px !important; 
+    margin-bottom: 20px !important; 
 }
 
 .slider-content h2 {
-    font-size: 26px !important;
+    font-size: 24px !important;
     word-wrap: break-word !important;
     margin-bottom: 15px !important;
 }
 
-/* 2. СТРЕЛКИ: Возвращаем "как обычно" по бокам */
+/* 2. СТРЕЛКИ: Оставляем их внизу, но делаем их аккуратными */
 .sliderB > label {
-    top: 50% !important; /* Центрируем по вертикали */
-    bottom: auto !important; 
-    transform: translateY(-50%) !important;
+    top: auto !important;
+    bottom: 20px !important; /* Прижимаем к низу, чтобы не мешали тексту */
+    transform: none !important;
     position: absolute !important;
     z-index: 10 !important;
 }
 
 /* Левая стрелка */
 .sliderB > input:checked + div + label {
-    left: 20px !important; /* Отступ от левого края */
+    left: 30px !important;
 }
 
 /* Правая стрелка */
 .sliderB > input:checked + div + label + label {
-    right: 20px !important; /* Отступ от правого края */
+    right: 30px !important;
     left: auto !important;
 }
 
