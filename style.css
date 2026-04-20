@@ -631,53 +631,69 @@ footer {
         white-space: normal !important; 
     }
 	
-/* 1. СЛАЙДЕР: Переходим на блочную модель */
-    .hero-slider {
-        height: auto !important; /* Убираем фиксированную высоту */
-        min-height: 500px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 60px 15px !important; /* Внутренние отступы вместо позиционирования */
-        position: relative !important;
-    }
+/* 1. СЛАЙДЕР: Оставляем твою блочную модель */
+.hero-slider {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 60px 15px !important;
+    position: relative !important;
+    /* КРИТИЧНО: Чтобы не было пустоты, задаем min-height явно */
+    min-height: 550px !important; 
+    height: auto !important;
+    overflow: hidden !important; /* Чтобы картинки не вылезали */
+}
 
-    .slider-content {
-        position: relative !important; /* ОТМЕНЯЕМ absolute */
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        width: 100% !important;
-        z-index: 5 !important;
-        margin-bottom: 40px !important; /* Место для стрелок внизу */
-    }
+/* 2. КОНТЕНТ: Твой вариант */
+.slider-content {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    z-index: 10 !important; /* Увеличили, чтобы был поверх всего */
+    margin-bottom: 60px !important; /* Больше места для стрелок */
+    text-align: center !important;
+}
 
-    .slider-content h2 {
-        font-size: 26px !important;
-        word-wrap: break-word !important;
-        margin-bottom: 15px !important;
-    }
+/* 3. КАРТИНКИ СЛАЙДЕРА (Чтобы они были видны!) */
+/* Добавь это, если слайдер пустой */
+.hero-slider .campus-slide, 
+.hero-slider div[class*="slide"] {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Картинка под текстом */
+    object-fit: cover;
+}
 
-    /* 2. СТРЕЛКИ: Фиксируем их строго внизу */
-    .sliderB > label {
-        top: auto !important;
-        bottom: 20px !important; /* Прижимаем к низу родителя */
-        transform: none !important;
-        position: absolute !important;
-    }
+/* 4. СТРЕЛКИ: Возвращаем их по бокам, как ты просила в прошлом сообщении */
+.sliderB > label {
+    top: 50% !important; /* Посередине высоты слайдера */
+    bottom: auto !important; 
+    transform: translateY(-50%) !important;
+    position: absolute !important;
+    z-index: 20 !important; /* Поверх текста и картинок */
+    display: none; /* Прячем неактивные */
+}
 
-    /* Левая стрелка */
-    .sliderB > input:checked + div + label {
-        left: 30px !important;
-    }
+/* Показываем стрелки активного слайда */
+.sliderB > input:checked + div + label,
+.sliderB > input:checked + div + label + label {
+    display: flex !important;
+}
 
-    /* Правая стрелка */
-    .sliderB > input:checked + div + label + label {
-        right: 30px !important;
-        left: auto !important;
-    }
+.sliderB > input:checked + div + label {
+    left: 15px !important; /* Прижали к левому краю */
+}
 
+.sliderB > input:checked + div + label + label {
+    right: 15px !important; /* Прижали к правому краю */
+    left: auto !important;
+}
     /* 3. ТЕКСТ (Специальности и О НАС): Убираем огромные пробелы */
     .about-text, .specialties-grid, .spec-info {
         text-align: center !important;
@@ -820,8 +836,6 @@ footer .container {
     footer a {
         font-size: 12px !important;
         line-height: 1.6 !important;
-        
-        /* 🔥 ВОТ ОНО РЕШЕНИЕ: */
         white-space: normal !important; /* Разрешаем тексту рваться на новые строчки! */
         word-wrap: break-word !important; /* Если слово слишком длинное — переносим его */
         overflow-wrap: break-word !important; 
@@ -832,52 +846,69 @@ footer .container {
 }
 
 @media screen and (max-width: 480px) {
-    /* 1. СЛАЙДЕР: Переходим на блочную модель */
-    .hero-slider {
-        height: auto !important; /* Убираем фиксированную высоту */
-        min-height: 500px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        padding: 60px 15px !important; /* Внутренние отступы вместо позиционирования */
-        position: relative !important;
-    }
+/* 1. СЛАЙДЕР: Оставляем твою блочную модель */
+.hero-slider {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 60px 15px !important;
+    position: relative !important;
+    /* КРИТИЧНО: Чтобы не было пустоты, задаем min-height явно */
+    min-height: 550px !important; 
+    height: auto !important;
+    overflow: hidden !important; /* Чтобы картинки не вылезали */
+}
 
-    .slider-content {
-        position: relative !important; /* ОТМЕНЯЕМ absolute */
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        width: 100% !important;
-        z-index: 5 !important;
-        margin-bottom: 40px !important; /* Место для стрелок внизу */
-    }
+/* 2. КОНТЕНТ: Твой вариант */
+.slider-content {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    z-index: 10 !important; /* Увеличили, чтобы был поверх всего */
+    margin-bottom: 60px !important; /* Больше места для стрелок */
+    text-align: center !important;
+}
 
-    .slider-content h2 {
-        font-size: 26px !important;
-        word-wrap: break-word !important;
-        margin-bottom: 15px !important;
-    }
+/* 3. КАРТИНКИ СЛАЙДЕРА (Чтобы они были видны!) */
+/* Добавь это, если слайдер пустой */
+.hero-slider .campus-slide, 
+.hero-slider div[class*="slide"] {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Картинка под текстом */
+    object-fit: cover;
+}
 
-    /* 2. СТРЕЛКИ: Фиксируем их строго внизу */
-    .sliderB > label {
-        top: auto !important;
-        bottom: 20px !important; /* Прижимаем к низу родителя */
-        transform: none !important;
-        position: absolute !important;
-    }
+/* 4. СТРЕЛКИ: Возвращаем их по бокам, как ты просила в прошлом сообщении */
+.sliderB > label {
+    top: 50% !important; /* Посередине высоты слайдера */
+    bottom: auto !important; 
+    transform: translateY(-50%) !important;
+    position: absolute !important;
+    z-index: 20 !important; /* Поверх текста и картинок */
+    display: none; /* Прячем неактивные */
+}
 
-    /* Левая стрелка */
-    .sliderB > input:checked + div + label {
-        left: 30px !important;
-    }
+/* Показываем стрелки активного слайда */
+.sliderB > input:checked + div + label,
+.sliderB > input:checked + div + label + label {
+    display: flex !important;
+}
 
-    /* Правая стрелка */
-    .sliderB > input:checked + div + label + label {
-        right: 30px !important;
-        left: auto !important;
-    }
+.sliderB > input:checked + div + label {
+    left: 15px !important; /* Прижали к левому краю */
+}
+
+.sliderB > input:checked + div + label + label {
+    right: 15px !important; /* Прижали к правому краю */
+    left: auto !important;
+}
 
     /* 3. ТЕКСТ (Специальности и О НАС): Убираем огромные пробелы */
     .about-text, .specialties-grid, .spec-info {
